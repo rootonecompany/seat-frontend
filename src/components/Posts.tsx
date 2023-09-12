@@ -1,16 +1,21 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { getPosts } from "@/apis/api/posts/getPosts";
+import { getPosts, useDeletePost } from "@/apis/api/posts";
+import { useCustomGetPosts } from "@/hooks/useGetPosts";
+import { Post } from "@/interface";
 import styled from "styled-components";
 
 export default function Posts() {
-    const { data } = useQuery({ queryKey: ["posts"], queryFn: getPosts });
-
-    const { data: otherData } = useQuery({
-        queryKey: ["no-ssr"],
-        queryFn: getPosts,
+    const { data } = useCustomGetPosts<Post[]>({
+        key: ["posts"],
+        fn: getPosts,
     });
+
+    const deletePostMutation = useDeletePost();
+
+    const handleDeletePost = async (id: number) => {
+        await deletePostMutation.mutateAsync(id);
+    };
 
     return (
         <Block>
@@ -18,15 +23,12 @@ export default function Posts() {
                 <h2>ssr 적용</h2>
                 <ul>
                     {data?.map((post) => (
-                        <li key={post.id}>{post.title}</li>
-                    ))}
-                </ul>
-            </div>
-            <div>
-                <h2>ssr 미적용</h2>
-                <ul>
-                    {otherData?.map((post) => (
-                        <li key={post.id}>{post.title}</li>
+                        <li
+                            key={post.id}
+                            onClick={() => handleDeletePost(post.id)}
+                        >
+                            {post.title}
+                        </li>
                     ))}
                 </ul>
             </div>
