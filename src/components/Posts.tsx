@@ -1,15 +1,10 @@
 "use client";
 
-import { getPosts, useDeletePost } from "@/apis/api/posts";
-import { useCustomGetPosts } from "@/hooks/useGetPosts";
-import { Post } from "@/interface";
+import { useDeletePost, useGetPosts } from "@/hooks/useApi";
 import styled from "styled-components";
 
 export default function Posts() {
-    const { data } = useCustomGetPosts<Post[]>({
-        key: ["posts"],
-        fn: getPosts,
-    });
+    const { data } = useGetPosts();
 
     const deletePostMutation = useDeletePost();
 
