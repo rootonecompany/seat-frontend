@@ -1,9 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { deletePost, getPosts } from "@/apis/api/posts";
+import { deletePost, getPost, getPosts } from "@/apis/api/posts";
 import { Post } from "@/interface";
 
 export function useGetPosts() {
     const { data, isLoading, error } = useQuery(["posts"], getPosts);
+
+    return { data, isLoading, error };
+}
+
+export function useGetPost(id: number) {
+    const { data, isLoading, error } = useQuery(["post", id], () =>
+        getPost(id)
+    );
 
     return { data, isLoading, error };
 }

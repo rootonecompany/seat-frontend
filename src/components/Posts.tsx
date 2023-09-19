@@ -1,32 +1,21 @@
 "use client";
 
-import { useDeletePost, useGetPosts } from "@/hooks/useApi";
+import { useGetPosts } from "@/hooks/useApi";
+import Link from "next/link";
 import styled from "styled-components";
 
 export default function Posts() {
     const { data } = useGetPosts();
 
-    const deletePostMutation = useDeletePost();
-
-    const handleDeletePost = async (id: number) => {
-        await deletePostMutation.mutateAsync(id);
-    };
-
     return (
         <Block>
-            <div>
-                <h2>ssr 적용</h2>
-                <ul>
-                    {data?.map((post) => (
-                        <li
-                            key={post.id}
-                            onClick={() => handleDeletePost(post.id)}
-                        >
-                            {post.title}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <LinkBlock>
+                {data?.map((post) => (
+                    <Link key={post.id} href={`/posts/${post.id}`}>
+                        {post.id} - {post.title}
+                    </Link>
+                ))}
+            </LinkBlock>
         </Block>
     );
 }
@@ -35,4 +24,15 @@ const Block = styled.div`
     width: 100%;
     height: 100vh;
     display: flex;
+`;
+const LinkBlock = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    a {
+        color: black;
+        text-decoration: none;
+        font-size: 1rem;
+    }
 `;

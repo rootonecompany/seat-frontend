@@ -4,4 +4,4 @@ const axiosConfig: AxiosRequestConfig = {
     baseURL: "https://jsonplaceholder.typicode.com",
 };
 
-export const api = axios.create(axiosConfig);
+export const PostApi = axios.create(axiosConfig);
