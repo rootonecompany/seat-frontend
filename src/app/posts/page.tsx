@@ -1,6 +1,6 @@
 import { dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
-import Posts from "@/components/Posts";
+import Posts from "@/app/posts/Posts";
 import HydrateClient from "@/utils/hydrate.client";
 import { getPosts } from "@/apis/api/posts";
 

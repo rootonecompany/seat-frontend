@@ -4,6 +4,7 @@ import StyledComponentsRegistry from "@/lib/styleRegistry";
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import RecoilProvider from "@/lib/RecoilProvider";
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
+import Modal from "@/components/modal/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
                         <StyledComponentsRegistry>
                             <GlobalStyle />
                             {children}
+                            <Modal />
                         </StyledComponentsRegistry>
                     </ReactQueryProvider>
                 </RecoilProvider>
