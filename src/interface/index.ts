@@ -9,6 +9,11 @@ export interface Post {
     body: string;
 }
 
+export interface PatchPost {
+    title?: string;
+    body?: string;
+}
+
 export interface ModalProps {
     key?: string;
     component?: () => JSX.Element;

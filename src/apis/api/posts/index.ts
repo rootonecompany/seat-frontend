@@ -1,7 +1,7 @@
 import { PostApi } from "../../instance.api";
 
 // 타입
-import { Post } from "@/interface";
+import { PatchPost, Post } from "@/interface";
 
 // 포스트 가져오기
 export async function getPosts() {
@@ -20,6 +20,13 @@ export async function getPost(id: number) {
 // 포스트 생성하기
 export async function createPost(post: Post) {
     const response = await PostApi.post("/posts", post);
+
+    return response.data as Post;
+}
+
+// 포스트 수정하기
+export async function patchPost(id: number, post: PatchPost) {
+    const response = await PostApi.patch(`/posts/${id}`, post);
 
     return response.data as Post;
 }

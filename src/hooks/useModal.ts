@@ -1,5 +1,3 @@
-"use client";
-
 import { ModalProps } from "@/interface";
 import { modalState } from "@/recoil/atom";
 import { useRecoilState } from "recoil";
