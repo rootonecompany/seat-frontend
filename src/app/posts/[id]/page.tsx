@@ -1,7 +1,7 @@
 import { getPost } from "@/apis/api/posts";
 import PostDetail from "@/app/posts/[id]/PostDetail";
 import { getQueryClient } from "@/utils/getQueryClient";
-import HydrateClient from "@/utils/hydrate.client";
+import HydrateClient from "@/lib/HydrateClient";
 import { dehydrate } from "@tanstack/react-query";
 
 export default async function DetailPage({

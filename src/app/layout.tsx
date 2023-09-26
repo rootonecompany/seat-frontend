@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import StyledComponentsRegistry from "@/lib/styleRegistry";
+import StyledComponentsRegistry from "@/lib/StyleRegistry";
 import { GlobalStyle } from "@/styles/GlobalStyle";
 import RecoilProvider from "@/lib/RecoilProvider";
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
