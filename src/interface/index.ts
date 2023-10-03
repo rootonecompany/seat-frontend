@@ -19,3 +19,15 @@ export interface ModalProps {
     component?: () => JSX.Element;
     close?: () => void;
 }
+
+// Form Type
+export interface Form {
+    [key: string]: string | number | boolean;
+}
+
+export interface UserFormRegister {
+    username: string;
+    email: string;
+    password: string;
+    checkbox: boolean;
+}
