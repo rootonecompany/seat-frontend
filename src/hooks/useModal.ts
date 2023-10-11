@@ -1,10 +1,10 @@
-import { ModalProps } from "@/interface";
+import { Modal } from "@/interface";
 import { modalState } from "@/recoil/atom";
 import { useRecoilState } from "recoil";
 
 export default function useModal() {
     const [modals, setModals] = useRecoilState(modalState);
-    const openModal = (modal: ModalProps) => {
+    const openModal = (modal: Modal) => {
         const key = Math.random().toString(36).substring(2);
         const nextProps = {
             key,

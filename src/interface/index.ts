@@ -14,7 +14,7 @@ export interface PatchPost {
     body?: string;
 }
 
-export interface ModalProps {
+export interface Modal {
     key?: string;
     component?: () => JSX.Element;
     close?: () => void;

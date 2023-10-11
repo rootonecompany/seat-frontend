@@ -11,7 +11,7 @@ export default function MainPage() {
             <button
                 onClick={() => {
                     openModal({
-                        component: () => <div>우현화</div>,
+                        component: () => <div>modal...</div>,
                     });
                 }}
             >
