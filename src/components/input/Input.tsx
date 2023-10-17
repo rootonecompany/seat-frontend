@@ -1,8 +1,8 @@
 "use client";
 
-import { Colors } from "@/styles/Colors";
 import React from "react";
 import styled from "styled-components";
+import { Colors } from "@/styles/Colors";
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 

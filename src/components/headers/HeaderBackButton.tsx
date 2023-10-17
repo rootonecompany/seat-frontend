@@ -1,8 +1,8 @@
 "use client";
 
-import styled from "styled-components";
 import Image from "next/image";
 import { useGoBack } from "@/hooks/useGoBack";
+import styled from "styled-components";
 
 import Prev from "/public/images/icons/icon_prev.png";
 

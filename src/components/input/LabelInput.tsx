@@ -1,8 +1,8 @@
 "use client";
 
-import { Colors } from "@/styles/Colors";
 import Input, { type Props as InputProps } from "./Input";
 import styled from "styled-components";
+import { Colors } from "@/styles/Colors";
 
 interface Props extends InputProps {
     label: string;

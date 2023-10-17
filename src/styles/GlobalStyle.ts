@@ -61,7 +61,9 @@ export const GlobalStyle = createGlobalStyle`
     }
     button {
         border: none;
-        outline: none;
         background: none;
+    }
+    button:focus:not(:focus-visible) {
+        outline: none;
     }
 `;

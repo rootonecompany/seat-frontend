@@ -11,7 +11,13 @@ export default function MainHeader() {
     return (
         <Block>
             <Link href="/">
-                <Image src={Logo} width={134} height={17} alt="TICKETPANG" />
+                <Image
+                    src={Logo}
+                    width={134}
+                    height={17}
+                    alt="TICKETPANG"
+                    priority
+                />
             </Link>
             <ButtonGroup />
         </Block>

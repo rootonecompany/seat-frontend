@@ -1,7 +1,7 @@
 "use client";
 
-import styled from "styled-components";
 import MainHeader from "./MainHeader";
+import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 interface Props {
