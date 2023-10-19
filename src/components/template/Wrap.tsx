@@ -13,8 +13,8 @@ export default function Wrap({ children, fullWidth = false }: Props) {
 
 const Block = styled.div<{ $dynamicSize: boolean }>`
     width: 100%;
+    height: inherit;
     padding: 0 0.9rem;
-
     ${(props) =>
         props.$dynamicSize &&
         css`

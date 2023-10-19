@@ -16,7 +16,7 @@ export interface PatchPost {
 
 export interface Modal {
     key?: string;
-    component?: () => JSX.Element;
+    component?: () => React.ReactNode;
     close?: () => void;
 }
 

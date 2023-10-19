@@ -19,9 +19,11 @@ export default function Header({ headerContent = <MainHeader /> }: Props) {
 
 const Block = styled.header`
     position: fixed;
-    left: 0;
+    left: 50%;
     top: 0;
+    transform: translateX(-50%);
     width: 100%;
+    max-width: 768px;
     height: 3.6rem;
     display: flex;
     align-items: center;

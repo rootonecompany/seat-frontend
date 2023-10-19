@@ -4,14 +4,14 @@ import styled, { keyframes } from "styled-components";
 
 interface Props {
     close?: () => void;
-    component?: () => JSX.Element;
+    component?: () => React.ReactNode;
 }
 
 export default function CustomModalForm({ close, component }: Props) {
     return (
         <Block>
             <Overlay onClick={close} />
-            <Modal>{component && component()}</Modal>
+            <ModalContent>{component && component()}</ModalContent>
         </Block>
     );
 }
@@ -26,7 +26,9 @@ const fadeIn = keyframes`
 `;
 
 const Block = styled.div`
+    position: relative;
     animation: ${fadeIn} 0.25s ease-in-out;
+    z-index: 9999;
 `;
 const Overlay = styled.div`
     position: fixed;
@@ -37,7 +39,7 @@ const Overlay = styled.div`
     z-index: 999;
     background: rgba(0, 0, 0, 0.5);
 `;
-const Modal = styled.div`
+const ModalContent = styled.div`
     position: fixed;
     left: 50%;
     top: 50%;

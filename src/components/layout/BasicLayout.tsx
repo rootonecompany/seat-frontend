@@ -9,5 +9,6 @@ export default function BasicLayout({ children }: ChildrenProps) {
 const Block = styled.main`
     width: 100%;
     max-width: 768px;
+    height: 100%;
     margin: 0 auto;
 `;
