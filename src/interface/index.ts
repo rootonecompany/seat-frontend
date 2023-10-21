@@ -22,7 +22,7 @@ export interface Modal {
 
 // Form Type
 export interface Form {
-    [key: string]: string | number | boolean;
+    [key: string]: string | number;
 }
 
 export interface UserFormRegister {

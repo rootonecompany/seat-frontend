@@ -11,19 +11,19 @@ interface Props extends InputProps {
 export default function LabelInput({ label, ...rest }: Props) {
     return (
         <Block>
-            <StyleLabel>{label}</StyleLabel>
+            <StyleLabel htmlFor={rest.id}>{label}</StyleLabel>
             <Input {...rest} />
         </Block>
     );
 }
 
-export const Block = styled.div`
+const Block = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
 `;
-export const StyleLabel = styled.label`
+const StyleLabel = styled.label`
     font-size: 0.7rem;
     font-weight: 600;
-    color: ${Colors.black3};
+    color: ${Colors.black2};
 `;

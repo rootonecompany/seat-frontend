@@ -1,30 +1,29 @@
 "use client";
 
 import styled from "styled-components";
-import { Colors } from "@/styles/Colors";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    buttonTypeStyle?: "primary" | "normal" | "disabled";
+    sizeType: "sub" | "main";
 }
 
-export default function Button({
-    buttonTypeStyle = "disabled",
-    ...rest
-}: Props) {
-    return <StyledButton $typeStyle={buttonTypeStyle} {...rest} />;
+export default function Button({ sizeType, ...rest }: Props) {
+    return <StyledButton $sizeType={sizeType} {...rest} />;
 }
 
-const StyledButton = styled.button<{
-    $typeStyle: "primary" | "normal" | "disabled";
-}>`
+const StyledButton = styled.button<{ $sizeType: "sub" | "main" }>`
     width: 100%;
-    height: 2.2rem;
-    border-radius: 0.2rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: ${Colors.white};
-    background-color: ${(props) =>
-        (props.$typeStyle === "primary" && Colors.primary) ||
-        (props.$typeStyle === "normal" && Colors.black3) ||
-        (props.$typeStyle === "disabled" && Colors.disabled3)};
+    ${({ $sizeType }) => {
+        switch ($sizeType) {
+            case "main":
+                return `
+                    height:2.5rem;
+                    border-radius: 0.3rem;
+                `;
+            case "sub":
+                return `
+                    height:2.4rem;
+                    border-radius: 0.2rem;
+                `;
+        }
+    }}
 `;

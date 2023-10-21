@@ -16,7 +16,6 @@ export const Colors = {
     disabled1: "#f4f6f7",
     disabled2: "#f5f5f5",
     disabled3: "#e9e9e9",
-
     sns: {
         google: "#e1e1e1",
         naver: "#04c75b",

@@ -10,10 +10,10 @@ export default function Home() {
         <Wrap>
             <Header />
             <LabelInput label="아이디" placeholder="아이디" />
-            <Button buttonTypeStyle="normal">로그인</Button>
             <SwipperWrapper />
             <Link href="/login">로그인</Link>
             <Link href="/register">회원가입</Link>
+            <Link href="/register/authorization">본인인증</Link>
         </Wrap>
     );
 }
