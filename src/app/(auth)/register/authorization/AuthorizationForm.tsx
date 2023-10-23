@@ -47,7 +47,7 @@ export default function AuthorizationForm() {
                         onChange: handleInputChange,
                     }}
                     buttonProps={{
-                        disabled: phoneValue.length >= 13,
+                        disabled: phoneValue.length < 13,
                     }}
                 />
             </InputForm>

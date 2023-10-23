@@ -42,15 +42,15 @@ const InputButtonWrapper = styled.div`
 `;
 const StyledButton = styled(Button)`
     width: 5.3rem;
-    background-color: ${Colors.gray2};
+    background-color: ${Colors.white};
     border: 1px solid ${Colors.line3};
     font-size: 0.7rem;
     font-weight: 400;
-    color: ${Colors.placeholder};
+    color: ${Colors.primary};
 
     &:disabled {
-        background-color: ${Colors.white};
+        color: ${Colors.placeholder};
+        background-color: ${Colors.gray2};
         border: 1px solid ${Colors.line3};
-        color: ${Colors.primary};
     }
 `;
