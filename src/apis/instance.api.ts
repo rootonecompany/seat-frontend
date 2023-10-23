@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 const axiosConfig: AxiosRequestConfig = {
-  // baseURL: "https://jsonplaceholder.typicode.com",
+  baseURL: "http://localhost:8000",
   headers: {
     "Content-Type": "application/json",
   },
