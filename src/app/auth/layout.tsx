@@ -16,7 +16,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "티켓팡 (TicketPang)",
+  title: "티켓팡 관리자(TicketPang)",
   description: "티켓팡(TicketPang): 편리한 티켓 예매와 최신 이벤트 정보",
 };
 
@@ -27,21 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <Script src="https://cdn.iamport.kr/v1/iamport.js" />
-      <body className={pretendard.className}>
-        <RecoilProvider>
-          <ReactQueryProvider>
-            <StyledComponentsRegistry>
-              <NextAuthProvider>
-                <GlobalStyle />
-                <BasicLayout>{children}</BasicLayout>
-                <Modal />
-                <Menu />
-              </NextAuthProvider>
-            </StyledComponentsRegistry>
-          </ReactQueryProvider>
-        </RecoilProvider>
-      </body>
+      <body className={pretendard.className}></body>
     </html>
   );
 }

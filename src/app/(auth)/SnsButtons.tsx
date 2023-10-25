@@ -15,11 +15,7 @@ interface Props {
 
 export default function SnsButtons({ mode }: Props) {
   const socialLogin = (type: string) => {
-    if (type === "naver") {
-      alert("준비중");
-    } else {
-      signIn(type);
-    }
+    signIn(type);
   };
 
   return (

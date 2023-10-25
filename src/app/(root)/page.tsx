@@ -1,3 +1,4 @@
+import Auth from "@/components/Auth";
 import Header from "@/components/headers/Header";
 import SwipperWrapper from "@/components/swiper/SwiperWrapper";
 import Wrap from "@/components/template/Wrap";
@@ -7,6 +8,7 @@ export default function Home() {
     <Wrap>
       <Header />
       <SwipperWrapper />
+      <Auth />
     </Wrap>
   );
 }
