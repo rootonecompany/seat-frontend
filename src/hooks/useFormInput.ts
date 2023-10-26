@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Form } from "@/interface";
 
-export function useFormInput(initialState = {}) {
-    const [formValue, setFormValue] = useState<Form>(initialState);
+export function useFormInput<T>(initialState: T) {
+    const [formValue, setFormValue] = useState<T>(initialState);
 
     const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
+
         setFormValue({ ...formValue, [name]: value });
     };
 

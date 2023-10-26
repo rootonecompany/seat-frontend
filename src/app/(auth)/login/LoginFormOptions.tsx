@@ -1,8 +1,8 @@
 "use client";
 
-import { Colors } from "@/styles/Colors";
 import Link from "next/link";
 import styled from "styled-components";
+import { Colors } from "@/styles/Colors";
 
 export default function LoginFormOptions() {
     return (

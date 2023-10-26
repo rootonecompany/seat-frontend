@@ -22,7 +22,7 @@ export interface Modal {
 
 // Form Type
 export interface Form {
-    [key: string]: string | number;
+    [key: string]: string | number | undefined;
 }
 
 export interface UserFormRegister {
@@ -43,4 +43,10 @@ interface RequestCertificate {
     company: string;
     merchant_uid: string;
     pg: string;
+}
+
+// Form Type
+export interface LoginFormType {
+    id: string;
+    password: string;
 }

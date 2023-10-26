@@ -1,53 +1,87 @@
 "use client";
 
+import Link from "next/link";
 import Button from "@/components/Button";
 import LabelInput from "@/components/input/LabelInput";
+import LoginFormOptions from "./LoginFormOptions";
 import { useFormInput } from "@/hooks/useFormInput";
+import { LoginFormType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 export default function LoginFormFields() {
-    const { formValue, handleInputValue } = useFormInput();
+    const { formValue, handleInputValue } = useFormInput<LoginFormType>({
+        id: "",
+        password: "",
+    });
+
     return (
-        <FormStyled>
-            <LabelInput
-                type="text"
-                placeholder="아이디를 입력해주세요."
-                label="아이디"
-                name="userId"
-                id="user_id"
-                onChange={handleInputValue}
-            />
-            <LabelInput
-                type="password"
-                placeholder="비밀번호를 입력해주세요."
-                label="비밀번호"
-                name="userPw"
-                id="user_pw"
-                onChange={handleInputValue}
-            />
+        <Block>
+            <FormStyled>
+                <LabelInput
+                    type="text"
+                    placeholder="아이디를 입력해주세요."
+                    label="아이디"
+                    name="id"
+                    id="user_id"
+                    onChange={handleInputValue}
+                />
+                <LabelInput
+                    type="password"
+                    placeholder="비밀번호를 입력해주세요."
+                    label="비밀번호"
+                    name="password"
+                    id="user_pw"
+                    onChange={handleInputValue}
+                />
+            </FormStyled>
+            <LoginFormOptions />
             <ButtonStyled
                 sizeType="sub"
-                disabled={!formValue.userId || !formValue.userPw}
+                disabled={formValue.id === "" || formValue.password === ""}
+                onClick={() => alert("gd")}
             >
                 로그인
             </ButtonStyled>
-        </FormStyled>
+            <ButtonWrapper>
+                <ButtonLink href="/register">회원가입</ButtonLink>
+            </ButtonWrapper>
+        </Block>
     );
 }
 
+const Block = styled.div``;
 const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+`;
+const ButtonWrapper = styled.div`
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid ${Colors.disabled2};
 `;
 const ButtonStyled = styled(Button)`
     background-color: ${Colors.primary};
     font-size: 0.8rem;
     font-weight: 600;
     color: ${Colors.white};
-
+    margin-top: 0.5rem;
     &:disabled {
         background-color: ${Colors.disabled3};
     }
+`;
+const ButtonLink = styled(Link)`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    border: 1px solid ${Colors.primary};
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: ${Colors.primary};
+    text-decoration: none;
+    -webkit-tab-hilight-color: transparent;
 `;

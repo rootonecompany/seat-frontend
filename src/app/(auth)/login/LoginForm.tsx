@@ -2,7 +2,6 @@
 
 import CopyRight from "@/components/CopyRight";
 import LoginFormFields from "./LoginFormFields";
-import LoginFormOptions from "./LoginFormOptions";
 import styled from "styled-components";
 
 export default function LoginForm() {
@@ -10,7 +9,6 @@ export default function LoginForm() {
         <Block>
             <FormBlock>
                 <LoginFormFields />
-                <LoginFormOptions />
             </FormBlock>
             <CopyRight />
         </Block>

@@ -21,4 +21,5 @@ export const Colors = {
         naver: "#04c75b",
         kakao: "#fde104",
     },
+    error: "#ff224a",
 };
