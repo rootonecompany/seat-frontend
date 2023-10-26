@@ -13,7 +13,6 @@ export default function Home() {
             <SwipperWrapper />
             <Link href="/login">로그인</Link>
             <Link href="/register">회원가입</Link>
-            <Link href="/register/authorization">본인인증</Link>
         </Wrap>
     );
 }
