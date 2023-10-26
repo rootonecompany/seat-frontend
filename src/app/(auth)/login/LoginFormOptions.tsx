@@ -4,7 +4,7 @@ import { Colors } from "@/styles/Colors";
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function FormOptions() {
+export default function LoginFormOptions() {
     return (
         <Block>
             <AutoLoginBlock>

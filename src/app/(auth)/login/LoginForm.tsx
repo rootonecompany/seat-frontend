@@ -1,18 +1,18 @@
 "use client";
 
+import CopyRight from "@/components/CopyRight";
 import LoginFormFields from "./LoginFormFields";
-import FormOptions from "./FormOptions";
+import LoginFormOptions from "./LoginFormOptions";
 import styled from "styled-components";
-import { Colors } from "@/styles/Colors";
 
 export default function LoginForm() {
     return (
         <Block>
             <FormBlock>
                 <LoginFormFields />
-                <FormOptions />
+                <LoginFormOptions />
             </FormBlock>
-            <Copy>Copyright © TicketPang Corp. All rights reserved.</Copy>
+            <CopyRight />
         </Block>
     );
 }
@@ -26,11 +26,4 @@ const Block = styled.div`
 `;
 const FormBlock = styled.div`
     flex: 1;
-`;
-const Copy = styled.span`
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: ${Colors.gray3};
-    text-align: center;
-    margin-bottom: 0.5rem;
 `;

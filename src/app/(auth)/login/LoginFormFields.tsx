@@ -42,7 +42,7 @@ const FormStyled = styled.form`
     gap: 1rem;
 `;
 const ButtonStyled = styled(Button)`
-    background-color: ${Colors.black3};
+    background-color: ${Colors.primary};
     font-size: 0.8rem;
     font-weight: 600;
     color: ${Colors.white};
