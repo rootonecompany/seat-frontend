@@ -31,3 +31,16 @@ export interface UserFormRegister {
     password: string;
     checkbox: boolean;
 }
+
+// Certificate Type
+interface RequestCertificate {
+    name: string;
+    phone: string;
+    birth: string;
+    gender_digit: string;
+    carrier: string;
+    is_mvno: boolean;
+    company: string;
+    merchant_uid: string;
+    pg: string;
+}

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import StyledComponentsRegistry from "@/lib/StyleRegistry";
-import { GlobalStyle } from "@/styles/GlobalStyle";
 import RecoilProvider from "@/lib/RecoilProvider";
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
 import Modal from "@/components/modal/Modal";
-import BasicLayout from "@/components/layout/BasicLayout";
 import Menu from "@/components/menu/Menu";
+import BasicLayout from "@/components/layout/BasicLayout";
+import { GlobalStyle } from "@/styles/GlobalStyle";
 
 const pretendard = localFont({
     src: "../../public/fonts/PretendardVariable.ttf",
@@ -36,6 +37,7 @@ export default function RootLayout({
                     </ReactQueryProvider>
                 </RecoilProvider>
             </body>
+            <Script src="https://cdn.iamport.kr/v1/iamport.js" />
         </html>
     );
 }

@@ -11,13 +11,36 @@ interface Props {
     buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
+declare const window: typeof globalThis & {
+    IMP: any;
+};
+
 export default function InputButton({ label, inputProps, buttonProps }: Props) {
+    const handleCertification = () => {
+        if (!window.IMP) return;
+        const { IMP } = window;
+        IMP.init("imp01165256");
+        IMP.certification(
+            {
+                pg: "danal.A010002002",
+                merchant_uid: "ORD20180131-0000011",
+                popup: false,
+            },
+            (rsp: any) => {
+                console.log(rsp);
+            }
+        );
+    };
     return (
         <Block>
             <StyleLabel htmlFor={inputProps.id}>{label}</StyleLabel>
             <InputButtonWrapper>
                 <Input {...inputProps} />
-                <StyledButton sizeType="sub" {...buttonProps}>
+                <StyledButton
+                    sizeType="sub"
+                    {...buttonProps}
+                    onClick={handleCertification}
+                >
                     본인인증
                 </StyledButton>
             </InputButtonWrapper>
