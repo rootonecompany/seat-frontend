@@ -12,5 +12,5 @@ const Copy = styled.span`
     font-weight: 400;
     color: ${Colors.gray3};
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 2.1rem;
 `;

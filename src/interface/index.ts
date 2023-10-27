@@ -50,3 +50,21 @@ export interface LoginFormType {
     id: string;
     password: string;
 }
+
+export interface RegisterFormType extends LoginFormType {
+    passwordCheck: string;
+    username: string;
+    userphone: string;
+}
+
+// Component Type
+export interface RequiredAgreedsType {
+    agreement_required_1: boolean;
+    agreement_required_2: boolean;
+    agreement_required_3: boolean;
+}
+
+export interface OptionalAgreedsType {
+    agreement_optional_1: boolean;
+    agreement_optional_2: boolean;
+}

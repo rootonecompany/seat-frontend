@@ -16,7 +16,7 @@ export default function LoginFormFields() {
     });
 
     return (
-        <Block>
+        <div>
             <FormStyled>
                 <LabelInput
                     type="text"
@@ -44,13 +44,12 @@ export default function LoginFormFields() {
                 로그인
             </ButtonStyled>
             <ButtonWrapper>
-                <ButtonLink href="/register">회원가입</ButtonLink>
+                <ButtonLink href="/register/terms">회원가입</ButtonLink>
             </ButtonWrapper>
-        </Block>
+        </div>
     );
 }
 
-const Block = styled.div``;
 const FormStyled = styled.form`
     display: flex;
     flex-direction: column;

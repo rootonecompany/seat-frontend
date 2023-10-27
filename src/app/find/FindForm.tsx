@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import FullHeightWrap from "@/components/template/FullHeightWrap";
 import Button from "@/components/Button";
 import LabelInput from "@/components/input/LabelInput";
 import CopyRight from "@/components/CopyRight";
@@ -32,7 +33,7 @@ export default function FindForm({ mode }: Props) {
     };
 
     return (
-        <Block>
+        <FullHeightWrap>
             <FromBlock>
                 {mode === "password" && (
                     <LabelInput
@@ -65,16 +66,10 @@ export default function FindForm({ mode }: Props) {
                 </FindButton>
             </FromBlock>
             <CopyRight />
-        </Block>
+        </FullHeightWrap>
     );
 }
 
-const Block = styled.div`
-    width: 100%;
-    height: calc(100% - 4.8rem);
-    display: flex;
-    flex-direction: column;
-`;
 const FromBlock = styled.div`
     flex: 1;
     width: 100%;
