@@ -55,6 +55,13 @@ export interface RegisterFormType extends LoginFormType {
     passwordCheck: string;
     username: string;
     userphone: string;
+    authorization: boolean;
+}
+
+export interface FindFormType {
+    id: string;
+    username: string;
+    userphone: string;
 }
 
 // Component Type

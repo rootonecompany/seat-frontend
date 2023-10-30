@@ -6,13 +6,26 @@ import { Colors } from "@/styles/Colors";
 
 interface Props extends InputProps {
     label: string;
+    children?: React.ReactNode;
 }
 
-export default function LabelInput({ label, ...rest }: Props) {
+export default function LabelInput({
+    label,
+    children,
+    className,
+    ...rest
+}: Props) {
     return (
-        <Block>
+        <Block className={className}>
             <StyleLabel htmlFor={rest.id}>{label}</StyleLabel>
-            <Input {...rest} />
+            {children ? (
+                <InputButtonBlock>
+                    <Input {...rest} />
+                    {children}
+                </InputButtonBlock>
+            ) : (
+                <Input {...rest} />
+            )}
         </Block>
     );
 }
@@ -26,4 +39,7 @@ const StyleLabel = styled.label`
     font-size: 0.7rem;
     font-weight: 600;
     color: ${Colors.black2};
+`;
+const InputButtonBlock = styled.div`
+    position: relative;
 `;

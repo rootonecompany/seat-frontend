@@ -167,7 +167,7 @@ export default function TermsForm() {
 }
 
 const Block = styled.div`
-    padding-top: 2.4rem;
+    padding-top: 1.2rem;
 `;
 const FullAgreementBlock = styled.div`
     padding-bottom: 1rem;

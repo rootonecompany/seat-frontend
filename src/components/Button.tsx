@@ -16,12 +16,12 @@ const StyledButton = styled.button<{ $sizeType: "sub" | "main" }>`
         switch ($sizeType) {
             case "main":
                 return `
-                    height:2.5rem;
+                    min-height:2.5rem;
                     border-radius: 0.3rem;
                 `;
             case "sub":
                 return `
-                    height:2.4rem;
+                    min-height:2.4rem;
                     border-radius: 0.2rem;
                 `;
         }

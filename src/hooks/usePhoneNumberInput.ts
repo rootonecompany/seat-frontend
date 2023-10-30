@@ -5,6 +5,7 @@ export const usePhoneNumberInput = () => {
 
     const formatPhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
+        if (value.length > 13) return;
         const phone = value
             .replace(/[^0-9]/g, "")
             .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/, "$1-$2-$3")

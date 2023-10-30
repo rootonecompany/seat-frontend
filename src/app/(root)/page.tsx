@@ -1,4 +1,3 @@
-import Button from "@/components/Button";
 import Header from "@/components/headers/Header";
 import LabelInput from "@/components/input/LabelInput";
 import SwipperWrapper from "@/components/swiper/SwiperWrapper";
