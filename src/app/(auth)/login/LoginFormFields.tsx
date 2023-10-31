@@ -4,13 +4,13 @@ import Link from "next/link";
 import Button from "@/components/Button";
 import LabelInput from "@/components/input/LabelInput";
 import LoginFormOptions from "./LoginFormOptions";
-import { useFormInput } from "@/hooks/useFormInput";
 import { LoginFormType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { useInput } from "@/hooks/useInput";
 
 export default function LoginFormFields() {
-    const { formValue, handleInputValue } = useFormInput<LoginFormType>({
+    const { formValue, handleInputValue } = useInput<LoginFormType>({
         id: "",
         password: "",
     });

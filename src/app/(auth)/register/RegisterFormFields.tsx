@@ -2,22 +2,21 @@
 
 import Button from "@/components/Button";
 import LabelInput from "@/components/input/LabelInput";
-import { usePhoneNumberInput } from "@/hooks/usePhoneNumberInput";
-import { useFormInput } from "@/hooks/useFormInput";
 import { RegisterFormType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { useInput } from "@/hooks/useInput";
 
-export default function RegisterFormItems() {
-    const { formValue, handleInputValue } = useFormInput<RegisterFormType>({
-        id: "",
-        password: "",
-        passwordCheck: "",
-        username: "",
-        userphone: "",
-        authorization: false,
-    });
-    const { phoneValue, formatPhoneNumber } = usePhoneNumberInput();
+export default function RegisterFormFields() {
+    const { formValue, handleInputValue, phoneValue } =
+        useInput<RegisterFormType>({
+            id: "",
+            password: "",
+            passwordCheck: "",
+            username: "",
+            userphone: "",
+            authorization: false,
+        });
 
     const isStrongPassword = () => {
         const passwordPattern =
@@ -90,19 +89,16 @@ export default function RegisterFormItems() {
                         name="username"
                         onChange={handleInputValue}
                     />
-                    <PhoneAuthorizationInput
+                    <PhoneAuthorization
                         label="휴대폰 번호"
                         placeholder="휴대폰 번호를 입력해주세요."
                         id="userphone"
                         name="userphone"
                         value={phoneValue}
-                        onChange={(e) => {
-                            formatPhoneNumber(e);
-                            handleInputValue(e);
-                        }}
+                        onChange={handleInputValue}
                     >
-                        <button>인증번호 받기</button>
-                    </PhoneAuthorizationInput>
+                        <button>본인인증 받기</button>
+                    </PhoneAuthorization>
                     <span>
                         만 14세 미만 회원은 법정대리인(부모님) 동의를 받은
                         <br />
@@ -182,7 +178,7 @@ const AuthorizationBlock = styled.div`
         line-height: 1.3;
     }
 `;
-const PhoneAuthorizationInput = styled(LabelInput)`
+const PhoneAuthorization = styled(LabelInput)`
     & > div > input {
         padding-right: 5.6rem;
     }

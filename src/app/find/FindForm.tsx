@@ -4,23 +4,32 @@ import FullHeightWrap from "@/components/template/FullHeightWrap";
 import Button from "@/components/Button";
 import LabelInput from "@/components/input/LabelInput";
 import CopyRight from "@/components/CopyRight";
-import { useFormInput } from "@/hooks/useFormInput";
-import { usePhoneNumberInput } from "@/hooks/usePhoneNumberInput";
 import { FindFormType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { useInput } from "@/hooks/useInput";
 
 interface Props {
     mode: "id" | "password";
 }
 
 export default function FindForm({ mode }: Props) {
-    const { formValue, handleInputValue } = useFormInput<FindFormType>({
+    const { formValue, handleInputValue, phoneValue } = useInput<FindFormType>({
         id: "",
         username: "",
         userphone: "",
     });
-    const { phoneValue, formatPhoneNumber } = usePhoneNumberInput();
+
+    const buttonOptions = {
+        id: {
+            disabled: !formValue.username || !phoneValue,
+            text: "아이디 찾기",
+        },
+        password: {
+            disabled: !formValue.id || !formValue.username || !phoneValue,
+            text: "비밀번호 찾기",
+        },
+    }[mode];
 
     return (
         <FullHeightWrap>
@@ -47,18 +56,10 @@ export default function FindForm({ mode }: Props) {
                     name="userphone"
                     id="userphone"
                     value={phoneValue}
-                    onChange={(e) => {
-                        handleInputValue(e);
-                        formatPhoneNumber(e);
-                    }}
+                    onChange={handleInputValue}
                 />
-                <FindButton sizeType="main">
-                    {
-                        {
-                            id: "아이디 찾기",
-                            password: "비밀번호 찾기",
-                        }[mode]
-                    }
+                <FindButton sizeType="main" disabled={buttonOptions.disabled}>
+                    {buttonOptions.text}
                 </FindButton>
             </FromBlock>
             <CopyRight />
@@ -79,4 +80,8 @@ const FindButton = styled(Button)`
     font-size: 0.8rem;
     font-weight: 600;
     color: ${Colors.white};
+
+    &:disabled {
+        background-color: ${Colors.disabled3};
+    }
 `;
