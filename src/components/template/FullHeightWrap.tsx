@@ -4,10 +4,16 @@ import styled from "styled-components";
 
 interface Props {
     children: React.ReactNode;
+    className?: string;
+    as?: keyof JSX.IntrinsicElements;
 }
 
-export default function FullHeightWrap({ children }: Props) {
-    return <Block>{children}</Block>;
+export default function FullHeightWrap({ children, className, as }: Props) {
+    return (
+        <Block className={className} as={as}>
+            {children}
+        </Block>
+    );
 }
 
 const Block = styled.div`

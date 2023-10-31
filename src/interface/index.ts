@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface ChildrenProps {
     children: React.ReactNode;
 }
@@ -74,4 +76,13 @@ export interface RequiredAgreedsType {
 export interface OptionalAgreedsType {
     agreement_optional_1: boolean;
     agreement_optional_2: boolean;
+}
+
+// Concert Banner Type
+export interface ConcertBannerType {
+    id: number;
+    mainTitle: string;
+    bannerImage: StaticImageData;
+    subHeading: string;
+    date: string;
 }
