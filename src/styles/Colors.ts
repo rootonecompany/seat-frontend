@@ -4,6 +4,7 @@ export const Colors = {
     black1: "#aaaaaa",
     black2: "#666666",
     black3: "#333333",
+    black4: "#000000",
     white: "#ffffff",
     gray1: "#f5f6f8",
     gray2: "#f6f6f6",

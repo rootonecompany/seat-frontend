@@ -78,11 +78,21 @@ export interface OptionalAgreedsType {
     agreement_optional_2: boolean;
 }
 
-// Concert Banner Type
+// Concert
 export interface ConcertBannerType {
     id: number;
     mainTitle: string;
     bannerImage: StaticImageData;
     subHeading: string;
     date: string;
+}
+
+export interface MyTicketType {
+    id: number;
+    d_day: string;
+    mainTitle: string;
+    address: string;
+    image: StaticImageData;
+    date: string;
+    time: string;
 }

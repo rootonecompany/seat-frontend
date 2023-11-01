@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 
 export default function Login() {
     return (
-        <Wrap>
+        <Wrap height="full">
             <Header headerContent={<PrevHeader title="로그인" />} />
             <LoginForm />
         </Wrap>

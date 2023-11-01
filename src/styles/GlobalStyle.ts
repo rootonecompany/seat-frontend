@@ -10,6 +10,11 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         min-height: 100%;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

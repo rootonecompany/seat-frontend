@@ -77,7 +77,7 @@ const SwiperItemContent = styled.div`
         top: 1.5rem;
         font-size: 1.15rem;
         font-weight: 600;
-        line-height: 1.6rem;
+        line-height: 1.4;
         color: ${Colors.white};
         white-space: pre-line;
     }

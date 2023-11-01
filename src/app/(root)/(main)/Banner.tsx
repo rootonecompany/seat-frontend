@@ -1,3 +1,5 @@
+"use client";
+
 import { SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 import Wrap from "@/components/template/Wrap";

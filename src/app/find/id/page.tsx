@@ -5,7 +5,7 @@ import FindForm from "../FindForm";
 
 export default function FindId() {
     return (
-        <Wrap>
+        <Wrap height="full">
             <Header headerContent={<PrevHeader title="아이디 찾기" />} />
             <FindForm mode="id" />
         </Wrap>
