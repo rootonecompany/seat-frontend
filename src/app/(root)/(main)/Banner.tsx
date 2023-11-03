@@ -30,14 +30,14 @@ const data: ConcertBannerType[] = [
         id: 1,
         mainTitle: "2023 조용필 & 위대한탄생\n 콘서트_[서울] [대구]",
         subHeading: "조용필 콘서트",
-        bannerImage: Concert,
+        image: Concert,
         date: "2023.10.27 ~ 2024.01.02",
     },
     {
         id: 2,
         mainTitle: "2023 조용필 & 위대한탄생\n 콘서트_[서울] [대구]",
         subHeading: "조용필 콘서트",
-        bannerImage: Concert,
+        image: Concert,
         date: "2023.10.27 ~ 2024.01.02",
     },
 ];

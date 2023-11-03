@@ -21,7 +21,7 @@ const data: PopularTicketType[] = [
             "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
-        thumbnail: Sample,
+        image: Sample,
     },
     {
         id: 2,
@@ -29,7 +29,7 @@ const data: PopularTicketType[] = [
             "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
-        thumbnail: Sample,
+        image: Sample,
     },
     {
         id: 3,
@@ -37,7 +37,7 @@ const data: PopularTicketType[] = [
             "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
-        thumbnail: Sample,
+        image: Sample,
     },
 ];
 

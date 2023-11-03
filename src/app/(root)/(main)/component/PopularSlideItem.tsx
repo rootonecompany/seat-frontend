@@ -11,10 +11,10 @@ interface Props {
 }
 
 export default function PopularSlideItem({ item }: Props) {
-    const { id, mainTitle, date, genre, thumbnail } = item;
+    const { id, mainTitle, date, genre, image } = item;
     return (
         <SwiperItem>
-            <Thumbnail $thumbnail={thumbnail}>
+            <Thumbnail $thumbnail={image}>
                 <span>{id}</span>
             </Thumbnail>
             <ConcertInfoWrap>

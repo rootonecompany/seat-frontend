@@ -82,7 +82,7 @@ export interface OptionalAgreedsType {
 export interface ConcertBannerType {
     id: number;
     mainTitle: string;
-    bannerImage: StaticImageData;
+    image: StaticImageData;
     subHeading: string;
     date: string;
 }
@@ -102,5 +102,5 @@ export interface PopularTicketType {
     mainTitle: string;
     date: string;
     genre: string;
-    thumbnail: StaticImageData;
+    image: StaticImageData;
 }
