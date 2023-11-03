@@ -3,7 +3,7 @@
 import Wrap from "@/components/template/Wrap";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
-import PopularSwiper from "@/components/swiper/PopularSwiper";
+import PopularSwiper from "@/app/(root)/(main)/component/PopularSwiper";
 import Button from "@/components/Button";
 
 import More from "public/images/icons/icon_more_dark.png";

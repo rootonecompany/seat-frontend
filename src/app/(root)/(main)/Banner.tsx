@@ -4,7 +4,7 @@ import { SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
 import Wrap from "@/components/template/Wrap";
 import SwipperWrapper from "@/components/swiper/SwiperWrapper";
-import BannerSlideItem from "@/components/swiper/BannerSlideItem";
+import BannerSlideItem from "@/app/(root)/(main)/component/BannerSlideItem";
 import { ConcertBannerType } from "@/interface";
 
 import Concert from "public/images/sample/sample_concert.png";

@@ -96,3 +96,11 @@ export interface MyTicketType {
     date: string;
     time: string;
 }
+
+export interface PopularTicketType {
+    id: number;
+    mainTitle: string;
+    date: string;
+    genre: string;
+    thumbnail: StaticImageData;
+}

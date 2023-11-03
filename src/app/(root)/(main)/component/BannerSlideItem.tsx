@@ -99,6 +99,7 @@ const SwiperItemContent = styled.div`
         .date {
             font-size: 0.7rem;
             font-weight: 400;
+            line-height: 1.2;
             color: ${Colors.white};
         }
         .date {
