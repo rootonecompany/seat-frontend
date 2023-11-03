@@ -1,13 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import styled from "styled-components";
+
+import More from "public/images/icons/icon_more_dark.png";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     sizeType: "sub" | "main" | "more";
+    more?: boolean;
 }
 
-export default function Button({ sizeType, ...rest }: Props) {
-    return <StyledButton $sizeType={sizeType} {...rest} />;
+export default function Button({ sizeType, more = false, ...rest }: Props) {
+    return (
+        <StyledButton $sizeType={sizeType} {...rest}>
+            {rest.children}
+            {more && <Image src={More} width={8} height={12} alt="더보기" />}
+        </StyledButton>
+    );
 }
 
 const StyledButton = styled.button<{ $sizeType: "sub" | "main" | "more" }>`

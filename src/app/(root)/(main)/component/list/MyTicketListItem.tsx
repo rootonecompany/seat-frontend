@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import SpeechBubble from "../SpeechBubble";
+import SpeechBubble from "../../../../../components/SpeechBubble";
 import { MyTicketType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
-
 
 interface Props {
     item: MyTicketType;

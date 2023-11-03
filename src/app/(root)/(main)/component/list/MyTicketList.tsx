@@ -38,6 +38,7 @@ export default function MyTicketList() {
 }
 
 const Block = styled.div`
+    margin-top: 1.75rem;
     h4 {
         font-size: 0.9rem;
         font-weight: 700;

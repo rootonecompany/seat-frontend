@@ -1,16 +1,10 @@
-"use client";
-import MyTicketList from "@/components/list/MyTicketList";
 import Wrap from "@/components/template/Wrap";
-import styled from "styled-components";
+import MyTicketList from "@/app/(root)/(main)/component/list/MyTicketList";
 
 export default function MyTicket() {
     return (
-        <Block>
+        <Wrap>
             <MyTicketList />
-        </Block>
+        </Wrap>
     );
 }
-
-const Block = styled(Wrap)`
-    margin-top: 1.75rem;
-`;

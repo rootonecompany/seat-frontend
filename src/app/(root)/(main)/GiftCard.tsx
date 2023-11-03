@@ -1,21 +1,19 @@
 import Wrap from "@/components/template/Wrap";
 import Title from "@/components/Title";
-import PopularSwiper from "@/app/(root)/(main)/component/PopularSwiper";
 import MoreButton from "@/components/MoreButton";
+import GiftCardSwiper from "./component/GiftCardSwiper";
 
-
-export default function PopularTickets() {
+export default function GiftCard() {
     return (
         <Wrap fullWidth={true}>
             <Title
-                title="오늘의 인기 티켓 🔥"
+                title="모바일 상품권샵"
                 tag="h2"
-                subTitle="지금 가장 인기있는 HOT한 공연"
                 padding="1.5rem 0 0 0.9rem"
             />
-            <PopularSwiper />
+            <GiftCardSwiper />
             <MoreButton>
-                <span>인기 티켓 더보기</span>
+                <span>상품권 더보기</span>
             </MoreButton>
         </Wrap>
     );

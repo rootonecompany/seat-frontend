@@ -1,6 +1,6 @@
 "use client";
 
-import SpeechBubble from "../SpeechBubble";
+import SpeechBubble from "../../../../../components/SpeechBubble";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 

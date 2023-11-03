@@ -104,3 +104,32 @@ export interface PopularTicketType {
     genre: string;
     image: StaticImageData;
 }
+
+export interface TicketRankType {
+    id: number;
+    name: string;
+    ranking: TicketRankingType[];
+}
+export interface TicketRankingType {
+    rank: number;
+    title: string;
+    date: string;
+    image: StaticImageData;
+}
+
+export interface GiftCardType {
+    id: number;
+    title: string;
+    image: StaticImageData;
+    price: string;
+    discount?: string;
+}
+
+export interface ReviewType {
+    id: number;
+    name: string;
+    title: string;
+    content: string;
+    image: StaticImageData;
+    rating: number;
+}
