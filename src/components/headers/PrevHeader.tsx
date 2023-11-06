@@ -9,15 +9,21 @@ interface Props {
     title?: string;
     label?: string;
     optionButton?: boolean;
+    overlap?: boolean;
 }
 
-export default function PrevHeader({ title, label, optionButton }: Props) {
+export default function PrevHeader({
+    title,
+    label,
+    optionButton,
+    overlap = false,
+}: Props) {
     return (
         <Block>
-            <HeaderBackButton />
+            <HeaderBackButton overlap={overlap} />
             {label && <span>{label}</span>}
             {title && <h2>{title}</h2>}
-            {optionButton && <HeaderButtonGroup />}
+            {optionButton && <HeaderButtonGroup overlap={overlap} />}
         </Block>
     );
 }

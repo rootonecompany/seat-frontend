@@ -10,13 +10,13 @@ interface Props {
 }
 
 export default function BannerSlideItem({ item }: Props) {
-    const { mainTitle, subHeading, image, date } = item;
+    const { title, subHeading, image, date } = item;
     return (
         <SwiperItemWrapper $banner={image}>
             <SwiperItemContent>
-                <h2>{mainTitle}</h2>
+                <h2>{title}</h2>
 
-                <Image src={image} alt={mainTitle} />
+                <Image src={image} alt={title} />
                 <div className="info">
                     <span className="title">{subHeading}</span>
                     <span className="date">{date}</span>

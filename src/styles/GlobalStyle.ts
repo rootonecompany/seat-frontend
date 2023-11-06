@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         min-height: 100%;
+        background-color: #ddd;
         -ms-overflow-style: none;
         scrollbar-width: none;
         &::-webkit-scrollbar {

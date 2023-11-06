@@ -17,24 +17,21 @@ const options: SwiperOptions = {
 const data: PopularTicketType[] = [
     {
         id: 1,
-        mainTitle:
-            "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
+        title: "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
         image: Sample,
     },
     {
         id: 2,
-        mainTitle:
-            "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
+        title: "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
         image: Sample,
     },
     {
         id: 3,
-        mainTitle:
-            "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
+        title: "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         date: "2023.10.27 ~ 01.02",
         genre: "콘서트",
         image: Sample,

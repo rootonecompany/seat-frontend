@@ -13,7 +13,7 @@ const data: MyTicketType[] = [
     {
         id: 1,
         d_day: "D-23",
-        mainTitle:
+        title:
             "2023 영탁 단독 콘서트 2023 영탁 단독 콘서트 2023 영탁 단독 콘서트",
         address: "서울잠실종합운동장",
         date: "10.27 (화)",

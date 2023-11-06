@@ -81,7 +81,7 @@ export interface OptionalAgreedsType {
 // Concert
 export interface ConcertBannerType {
     id: number;
-    mainTitle: string;
+    title: string;
     image: StaticImageData;
     subHeading: string;
     date: string;
@@ -90,7 +90,7 @@ export interface ConcertBannerType {
 export interface MyTicketType {
     id: number;
     d_day: string;
-    mainTitle: string;
+    title: string;
     address: string;
     image: StaticImageData;
     date: string;
@@ -99,7 +99,7 @@ export interface MyTicketType {
 
 export interface PopularTicketType {
     id: number;
-    mainTitle: string;
+    title: string;
     date: string;
     genre: string;
     image: StaticImageData;

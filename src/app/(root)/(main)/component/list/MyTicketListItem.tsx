@@ -11,13 +11,13 @@ interface Props {
 }
 
 export default function MyTicketListItem({ item }: Props) {
-    const { d_day, mainTitle, address, date, time, image } = item;
+    const { d_day, title, address, date, time, image } = item;
 
     return (
         <Block>
             <TicketInfoWrap>
                 <span className="d_day">{d_day}</span>
-                <strong>{mainTitle}</strong>
+                <strong>{title}</strong>
                 <p>{address}</p>
                 <div className="date">
                     <span>{date}</span>
@@ -36,6 +36,7 @@ const Block = styled.div`
     min-height: 6.3rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1.3rem;
     padding: 0.85rem 1rem 1rem;
     border-radius: 0.3rem;

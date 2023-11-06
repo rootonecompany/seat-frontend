@@ -1,5 +1,8 @@
 "use client";
 
+import { useCallback, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
+import { headerScrollState } from "@/recoil/atom";
 import styled, { css } from "styled-components";
 
 interface Props {
@@ -17,6 +20,20 @@ export default function Wrap({
     className,
     as,
 }: Props) {
+    const setIsScroll = useSetRecoilState(headerScrollState);
+    const handleScroll = useCallback(() => {
+        if (window.scrollY > 0) {
+            setIsScroll(true);
+        } else {
+            setIsScroll(false);
+        }
+    }, [setIsScroll]);
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
+
     return (
         <Block
             $dynamicSize={fullWidth}
