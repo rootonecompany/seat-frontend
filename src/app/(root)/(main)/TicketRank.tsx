@@ -160,7 +160,7 @@ import Sample from "public/images/sample/sample_concert.png";
 import Sample2 from "public/images/sample/sample_concert2.png";
 
 export default function TicketRank() {
-    const { tab, changeTab } = useTab();
+    const { tab, changeTab } = useTab(1);
     const tabContentData = TabData.find((item) => item.id === tab);
 
     return (
@@ -174,7 +174,7 @@ export default function TicketRank() {
                 <TicketRankTabButton
                     item={TabData}
                     tab={tab}
-                    onClickTab={changeTab}
+                    handleChangeTab={changeTab}
                 />
                 {tabContentData && (
                     <TicketRankTabContent item={tabContentData} />

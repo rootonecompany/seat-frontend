@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
-export function useTab() {
-    const [tab, setTab] = useState(1);
+export function useTab(initialState: number) {
+    const [tab, setTab] = useState(initialState);
     const changeTab = useCallback((tab: number) => {
         setTab(tab);
     }, []);

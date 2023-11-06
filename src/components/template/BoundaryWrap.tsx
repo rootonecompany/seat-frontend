@@ -7,15 +7,17 @@ interface Props {
     children: React.ReactNode;
     padding?: string | undefined;
     borderNone?: boolean;
+    as?: keyof JSX.IntrinsicElements;
 }
 
 export default function BoundaryWrap({
     children,
     padding,
     borderNone = false,
+    as,
 }: Props) {
     return (
-        <Block $padding={padding} $border={borderNone}>
+        <Block $padding={padding} $border={borderNone} as={as}>
             {children}
         </Block>
     );

@@ -3,6 +3,7 @@ import Header from "@/components/headers/Header";
 import PrevHeader from "@/components/headers/PrevHeader";
 import Footer from "@/components/footer/Footer";
 import Main from "./Main";
+import FooterBar from "./component/FooterBar";
 
 export default function Detail() {
     return (
@@ -15,6 +16,7 @@ export default function Detail() {
             />
             <Main />
             <Footer />
+            <FooterBar />
         </Wrap>
     );
 }

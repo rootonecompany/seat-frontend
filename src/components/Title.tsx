@@ -8,11 +8,18 @@ interface Props {
     subTitle?: string;
     tag?: "h2" | "h3";
     padding?: string | undefined;
+    className?: string;
 }
 
-export default function Title({ title, subTitle, tag = "h2", padding }: Props) {
+export default function Title({
+    title,
+    subTitle,
+    tag = "h2",
+    padding,
+    className,
+}: Props) {
     return (
-        <TitleWrap $padding={padding}>
+        <TitleWrap $padding={padding} className={className}>
             {tag === "h2" && <h2>{title}</h2>}
             {tag === "h3" && <h3>{title}</h3>}
             {subTitle && <span>{subTitle}</span>}

@@ -11,7 +11,7 @@ import { Colors } from "@/styles/Colors";
 interface Props {
     item: TicketRankType[];
     tab: number;
-    onClickTab: (id: number) => void;
+    handleChangeTab: (id: number) => void;
 }
 
 const options: SwiperOptions = {
@@ -19,14 +19,18 @@ const options: SwiperOptions = {
     spaceBetween: 6,
 };
 
-export default function TicketRankTabButton({ item, tab, onClickTab }: Props) {
+export default function TicketRankTabButton({
+    item,
+    tab,
+    handleChangeTab,
+}: Props) {
     return (
         <TabButtonWrapper>
             <SwipperWrapper {...options}>
                 {item.map((item, index) => (
                     <SwiperSlide key={item.id}>
                         <TabStyledButton
-                            onClick={() => onClickTab(item.id)}
+                            onClick={() => handleChangeTab(item.id)}
                             className={tab === index + 1 ? "active" : ""}
                         >
                             {item.name}

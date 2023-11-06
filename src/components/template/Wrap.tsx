@@ -9,6 +9,7 @@ interface Props {
     children: React.ReactNode;
     fullWidth?: boolean;
     height?: "full" | "normal" | undefined;
+    fullHeight?: boolean;
     className?: string;
     as?: keyof JSX.IntrinsicElements;
 }
@@ -16,6 +17,7 @@ interface Props {
 export default function Wrap({
     children,
     fullWidth = false,
+    fullHeight = false,
     height,
     className,
     as,
@@ -38,6 +40,7 @@ export default function Wrap({
         <Block
             $dynamicSize={fullWidth}
             $height={height}
+            $fullHeight={fullHeight}
             className={className}
             as={as}
         >
@@ -49,6 +52,7 @@ export default function Wrap({
 const Block = styled.div<{
     $dynamicSize: boolean;
     $height: "full" | "normal" | undefined;
+    $fullHeight: boolean;
 }>`
     width: 100%;
     height: inherit;
@@ -67,5 +71,10 @@ const Block = styled.div<{
         props.$height === "full" &&
         css`
             height: 100vh;
+        `}
+    ${(props) =>
+        props.$fullHeight &&
+        css`
+            min-height: 100vh;
         `}
 `;

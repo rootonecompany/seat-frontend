@@ -3,7 +3,6 @@ import Title from "@/components/Title";
 import PopularSwiper from "@/app/(root)/(main)/component/PopularSwiper";
 import MoreButton from "@/components/MoreButton";
 
-
 export default function PopularTickets() {
     return (
         <Wrap fullWidth={true}>
