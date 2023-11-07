@@ -9,6 +9,7 @@ interface Props {
     tag?: "h2" | "h3";
     padding?: string | undefined;
     className?: string;
+    children?: React.ReactNode;
 }
 
 export default function Title({
@@ -17,12 +18,14 @@ export default function Title({
     tag = "h2",
     padding,
     className,
+    children,
 }: Props) {
     return (
         <TitleWrap $padding={padding} className={className}>
             {tag === "h2" && <h2>{title}</h2>}
             {tag === "h3" && <h3>{title}</h3>}
             {subTitle && <span>{subTitle}</span>}
+            {children}
         </TitleWrap>
     );
 }
