@@ -1,23 +1,42 @@
 "use client";
 
+import { useState } from "react";
 import Button from "@/components/Button";
 import RegsiterFormInput from "./RegisterFormInput";
 import RegisterFormAuthorization from "./RegisterFormAuthorization";
 import { useInput } from "@/hooks/useInput";
-import { RegisterFormType } from "@/interface";
+import { RegisterType } from "@/interface";
+import { Register } from "@/apis/api/auth/auth";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 export default function RegisterFormFields() {
-    const { formValue, handleInputValue, phoneValue } =
-        useInput<RegisterFormType>({
-            id: "",
-            password: "",
-            passwordCheck: "",
-            username: "",
-            userphone: "",
-            authorization: false,
-        });
+    const [isPassCheck, setIsPassCheck] = useState<string>("");
+    const { formValue, handleInputValue, phoneValue } = useInput<RegisterType>({
+        userId: "",
+        password: "",
+        name: "",
+        phone: "",
+        isPhoneVerified: true,
+    });
+
+    const isStrongUserId = () => {
+        const userIdPattern = /^[A-Za-z0-9]{6,}$/;
+        return userIdPattern.test(formValue.userId);
+    };
+    const isStrongPassword = () => {
+        const passwordPattern =
+            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
+        return passwordPattern.test(formValue.password);
+    };
+    const isSamePassword = () => {
+        return formValue.password === isPassCheck;
+    };
+
+    const handleRegister = async () => {
+        const res = await Register(formValue);
+        console.log(res);
+    };
 
     return (
         <Block>
@@ -25,6 +44,11 @@ export default function RegisterFormFields() {
                 <RegsiterFormInput
                     formValue={formValue}
                     handleInputValue={handleInputValue}
+                    isPassCheck={isPassCheck}
+                    setIsPassCheck={setIsPassCheck}
+                    isStrongUserId={isStrongUserId}
+                    isSamePassword={isSamePassword}
+                    isStrongPassword={isStrongPassword}
                 />
                 <RegisterFormAuthorization
                     handleInputValue={handleInputValue}
@@ -34,13 +58,15 @@ export default function RegisterFormFields() {
             <RegisterButton
                 sizeType="main"
                 disabled={
-                    !formValue.id ||
-                    !formValue.password ||
-                    !formValue.passwordCheck ||
-                    !formValue.username ||
-                    !formValue.userphone ||
-                    !formValue.authorization
+                    formValue.userId === "" ||
+                    formValue.password === "" ||
+                    formValue.name === "" ||
+                    formValue.phone === "" ||
+                    !isStrongUserId() ||
+                    !isStrongPassword() ||
+                    !isSamePassword()
                 }
+                onClick={handleRegister}
             >
                 가입하기
             </RegisterButton>

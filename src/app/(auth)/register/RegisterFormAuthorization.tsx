@@ -19,14 +19,14 @@ export default function RegisterFormAuthorization({
                 label="이름"
                 placeholder="이름을 입력해주세요."
                 id="username"
-                name="username"
+                name="name"
                 onChange={handleInputValue}
             />
             <PhoneAuthorization
                 label="휴대폰 번호"
                 placeholder="휴대폰 번호를 입력해주세요."
                 id="userphone"
-                name="userphone"
+                name="phone"
                 value={phoneValue}
                 onChange={handleInputValue}
             >

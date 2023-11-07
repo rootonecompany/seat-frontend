@@ -7,7 +7,7 @@ export function useInput<T>(initialState: T) {
     const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        if (name === "userphone" || name === "user_phone") {
+        if (name === "userphone" || name === "phone") {
             if (value.length > 13) return;
 
             const phone = value

@@ -1,5 +1,27 @@
 import { StaticImageData } from "next/image";
 
+// register type
+export interface RegisterType {
+    userId: string;
+    password: string;
+    name: string;
+    phone: string;
+    isPhoneVerified: boolean;
+}
+export interface RegisterReturnType {
+    id: number;
+    role: string;
+    userId: string;
+    name: string;
+    phone: string;
+    phone_e164: string;
+    isPhoneVerified: boolean;
+    createdAt: string;
+    updatedAt: string;
+    accessToken: string;
+    expireIn: number;
+}
+
 export interface ChildrenProps {
     children: React.ReactNode;
 }

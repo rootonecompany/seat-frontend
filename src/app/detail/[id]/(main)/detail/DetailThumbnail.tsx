@@ -4,11 +4,15 @@ import styled from "styled-components";
 
 import Sample from "public/images/sample/sample_concert.png";
 
-export default function DetailThumbnail() {
+interface Props {
+    children?: React.ReactNode;
+}
+
+export default function DetailThumbnail({ children }: Props) {
     return (
         <ThumbnailWrap>
-            <ThumbnailBackground />
-            <Thumbnail />
+            <ThumbnailBackground>{children}</ThumbnailBackground>
+            {!children && <Thumbnail />}
         </ThumbnailWrap>
     );
 }

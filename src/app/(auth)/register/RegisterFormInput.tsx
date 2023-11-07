@@ -1,39 +1,51 @@
 "use client";
 
 import LabelInput from "@/components/input/LabelInput";
-import { RegisterFormType } from "@/interface";
+import { RegisterType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 export interface Props {
-    formValue: RegisterFormType;
+    formValue: RegisterType;
     handleInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isPassCheck?: string;
+    setIsPassCheck?: React.Dispatch<React.SetStateAction<string>>;
+    isStrongUserId?: () => boolean;
+    isStrongPassword?: () => boolean;
+    isSamePassword?: () => boolean;
 }
 
 export default function RegsiterFormInput({
     formValue,
     handleInputValue,
+    isPassCheck,
+    setIsPassCheck,
+    isStrongUserId,
+    isStrongPassword,
+    isSamePassword,
 }: Props) {
-    const isStrongPassword = () => {
-        const passwordPattern =
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
-        return passwordPattern.test(formValue.password);
-    };
-    const isSamePassword = () => {
-        return formValue.password === formValue.passwordCheck;
-    };
-
     return (
         <InputWrapper>
-            <LabelInputDubleCheck
-                label="아이디"
-                placeholder="아이디를 입력해주세요."
-                id="id"
-                name="id"
-                onChange={handleInputValue}
-            >
-                <button>중복확인</button>
-            </LabelInputDubleCheck>
+            <InputItemWrap>
+                <LabelInputDubleCheck
+                    label="아이디"
+                    placeholder="아이디를 입력해주세요."
+                    id="id"
+                    name="userId"
+                    onChange={handleInputValue}
+                >
+                    <button>중복확인</button>
+                </LabelInputDubleCheck>
+                {formValue.userId !== "" ? (
+                    isStrongUserId && !isStrongUserId() ? (
+                        <span>숫자, 영문 포함 6자이상 입력해주세요.</span>
+                    ) : (
+                        <span className="available">
+                            사용 가능한 아이디입니다.
+                        </span>
+                    )
+                ) : null}
+            </InputItemWrap>
             <InputItemWrap>
                 <LabelInput
                     label="비밀번호"
@@ -44,7 +56,7 @@ export default function RegsiterFormInput({
                     onChange={handleInputValue}
                 />
                 {formValue.password !== "" ? (
-                    !isStrongPassword() ? (
+                    isStrongPassword && !isStrongPassword() ? (
                         <span>
                             숫자, 영문, 특수문자 포함 10~16자리로 입력해주세요.
                         </span>
@@ -62,10 +74,12 @@ export default function RegsiterFormInput({
                     placeholder="비밀번호를 입력해주세요."
                     id="passwordCheck"
                     name="passwordCheck"
-                    onChange={handleInputValue}
+                    onChange={(e) =>
+                        setIsPassCheck && setIsPassCheck(e.target.value)
+                    }
                 />
-                {formValue.passwordCheck !== "" ? (
-                    !isSamePassword() ? (
+                {isPassCheck !== "" ? (
+                    isSamePassword && !isSamePassword() ? (
                         <span>비밀번호가 일치하지 않습니다.</span>
                     ) : (
                         <span className="available">
