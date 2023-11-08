@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { menuState } from "@/recoil/atom";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import MenuInner from "./MenuInner";
 
 export default function Menu() {
     const [isMenuOpen, setIsMenuOpen] = useRecoilState(menuState);
@@ -42,7 +43,7 @@ export default function Menu() {
                         }}
                         exit={{ x: "100%" }}
                     >
-                        holla
+                        <MenuInner />
                     </Content>
                 </Block>
             )}
@@ -76,8 +77,9 @@ const Content = styled(motion.div)`
     position: absolute;
     right: 0;
     top: 0;
-    width: 90%;
+    width: 80%;
     height: 100%;
+    padding: 2.1rem 1.1rem 1.6rem;
     background-color: ${Colors.white};
     z-index: 100;
 `;

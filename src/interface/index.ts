@@ -1,5 +1,36 @@
 import { StaticImageData } from "next/image";
 
+declare global {
+    interface Window {
+        IMP?: Iamport;
+    }
+}
+// Iamport Type
+export interface Iamport {
+    init: (accountID: string) => void;
+    certification: (
+        options: {
+            pg: string;
+            merchant_uid: string;
+            m_redirect_url?: string;
+            min_age?: string;
+            name?: string;
+            phone?: string;
+            popup?: boolean;
+        },
+        callback?: (rsp: IamportResponse) => void
+    ) => void;
+}
+export interface IamportResponse {
+    error_code: null | string;
+    error_msg: null | string;
+    imp_uid: string;
+    merchant_uid: string;
+    pg_provider: string;
+    pg_type: string;
+    success: boolean;
+}
+
 // register type
 export interface RegisterType {
     userId: string;
@@ -83,9 +114,9 @@ export interface RegisterFormType extends LoginFormType {
 }
 
 export interface FindFormType {
-    id: string;
-    username: string;
-    userphone: string;
+    userId?: string;
+    name: string;
+    phone: string;
 }
 
 // Component Type

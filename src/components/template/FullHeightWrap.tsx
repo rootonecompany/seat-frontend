@@ -18,7 +18,7 @@ export default function FullHeightWrap({ children, className, as }: Props) {
 
 const Block = styled.div`
     width: 100%;
-    height: calc(100% - 3.6rem);
+    height: calc(100vh - 3.6rem);
     display: flex;
     flex-direction: column;
 `;

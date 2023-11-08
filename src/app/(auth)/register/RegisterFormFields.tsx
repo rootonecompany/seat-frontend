@@ -12,13 +12,14 @@ import { Colors } from "@/styles/Colors";
 
 export default function RegisterFormFields() {
     const [isPassCheck, setIsPassCheck] = useState<string>("");
-    const { formValue, handleInputValue, phoneValue } = useInput<RegisterType>({
-        userId: "",
-        password: "",
-        name: "",
-        phone: "",
-        isPhoneVerified: true,
-    });
+    const { formValue, setFormValue, handleInputValue, phoneValue } =
+        useInput<RegisterType>({
+            userId: "",
+            password: "",
+            name: "",
+            phone: "",
+            isPhoneVerified: false,
+        });
 
     const isStrongUserId = () => {
         const userIdPattern = /^[A-Za-z0-9]{6,}$/;
@@ -31,6 +32,18 @@ export default function RegisterFormFields() {
     };
     const isSamePassword = () => {
         return formValue.password === isPassCheck;
+    };
+    const calculateIsDisabled = () => {
+        return (
+            formValue.userId === "" ||
+            formValue.password === "" ||
+            formValue.name === "" ||
+            formValue.phone === "" ||
+            !isStrongUserId() ||
+            !isStrongPassword() ||
+            !isSamePassword() ||
+            !formValue.isPhoneVerified
+        );
     };
 
     const handleRegister = async () => {
@@ -53,20 +66,14 @@ export default function RegisterFormFields() {
                 <RegisterFormAuthorization
                     handleInputValue={handleInputValue}
                     phoneValue={phoneValue}
+                    formValue={formValue}
+                    setFormValue={setFormValue}
                 />
             </FormWrapper>
             <RegisterButton
                 sizeType="main"
-                disabled={
-                    formValue.userId === "" ||
-                    formValue.password === "" ||
-                    formValue.name === "" ||
-                    formValue.phone === "" ||
-                    !isStrongUserId() ||
-                    !isStrongPassword() ||
-                    !isSamePassword()
-                }
-                onClick={handleRegister}
+                disabled={calculateIsDisabled()}
+                onClick={() => Register(formValue)}
             >
                 가입하기
             </RegisterButton>

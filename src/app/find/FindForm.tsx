@@ -14,19 +14,26 @@ interface Props {
 }
 
 export default function FindForm({ mode }: Props) {
-    const { formValue, handleInputValue, phoneValue } = useInput<FindFormType>({
-        id: "",
-        username: "",
-        userphone: "",
-    });
+    const { formValue, handleInputValue, phoneValue } = useInput<FindFormType>(
+        mode === "id"
+            ? {
+                  name: "",
+                  phone: "",
+              }
+            : {
+                  userId: "",
+                  name: "",
+                  phone: "",
+              }
+    );
 
     const buttonOptions = {
         id: {
-            disabled: !formValue.username || !phoneValue,
+            disabled: !formValue.name || !phoneValue,
             text: "아이디 찾기",
         },
         password: {
-            disabled: !formValue.id || !formValue.username || !phoneValue,
+            disabled: !formValue.userId || !formValue.name || !phoneValue,
             text: "비밀번호 찾기",
         },
     }[mode];
@@ -38,7 +45,7 @@ export default function FindForm({ mode }: Props) {
                     <LabelInput
                         label="아이디"
                         placeholder="아이디를 입력해주세요."
-                        name="id"
+                        name="userId"
                         id="id"
                         onChange={handleInputValue}
                     />
@@ -46,14 +53,14 @@ export default function FindForm({ mode }: Props) {
                 <LabelInput
                     label="이름"
                     placeholder="이름을 입력해주세요."
-                    name="username"
+                    name="name"
                     id="username"
                     onChange={handleInputValue}
                 />
                 <LabelInput
                     label="휴대폰 번호"
                     placeholder="휴대폰 번호를 입력해주세요."
-                    name="userphone"
+                    name="phone"
                     id="userphone"
                     value={phoneValue}
                     onChange={handleInputValue}

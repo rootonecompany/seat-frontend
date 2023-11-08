@@ -8,3 +8,6 @@ const axiosConfig: AxiosRequestConfig = {
 };
 
 export const api = axios.create(axiosConfig);
+// api.defaults.withCredentials = true;
+
+export const authorizationApi = axios.create(axiosConfig);

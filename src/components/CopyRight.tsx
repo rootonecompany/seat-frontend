@@ -3,8 +3,16 @@
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
-export default function CopyRight() {
-    return <Copy>Copyright © TicketPang Corp. All rights reserved.</Copy>;
+interface Props {
+    className?: string;
+}
+
+export default function CopyRight({ className }: Props) {
+    return (
+        <Copy className={className}>
+            Copyright © TicketPang Corp. All rights reserved.
+        </Copy>
+    );
 }
 
 const Copy = styled.span`

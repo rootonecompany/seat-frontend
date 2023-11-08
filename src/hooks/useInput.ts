@@ -26,5 +26,5 @@ export function useInput<T>(initialState: T) {
         setFormValue({ ...formValue, [name]: value });
     };
 
-    return { formValue, handleInputValue, phoneValue };
+    return { formValue, setFormValue, handleInputValue, phoneValue };
 }

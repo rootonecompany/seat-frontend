@@ -2,17 +2,49 @@
 
 import LabelInput from "@/components/input/LabelInput";
 import { Props as FormType } from "./RegisterFormInput";
+import { RegisterType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 interface Props extends Omit<FormType, "formValue"> {
     phoneValue: string;
+    formValue: RegisterType;
+    setFormValue: React.Dispatch<React.SetStateAction<RegisterType>>;
 }
 
 export default function RegisterFormAuthorization({
     phoneValue,
     handleInputValue,
+    formValue,
+    setFormValue,
 }: Props) {
+    const handleVerification = () => {
+        if (formValue.name === "" || formValue.phone === "") return;
+        if (!window.IMP) return;
+        const IMP = window.IMP;
+        IMP.init("imp54817857");
+        IMP.certification(
+            {
+                pg: "danal",
+                merchant_uid: "merchant_" + new Date().getTime(),
+                name: formValue.name,
+                phone: formValue.phone,
+                popup: false,
+            },
+            (rsp) => {
+                if (rsp.success) {
+                    console.log(rsp);
+                    setFormValue({
+                        ...formValue,
+                        isPhoneVerified: true,
+                    });
+                } else {
+                    console.log(rsp);
+                }
+            }
+        );
+    };
+
     return (
         <AuthorizationBlock>
             <LabelInput
@@ -30,7 +62,15 @@ export default function RegisterFormAuthorization({
                 value={phoneValue}
                 onChange={handleInputValue}
             >
-                <button>본인인증 받기</button>
+                <button
+                    onClick={handleVerification}
+                    className={!formValue.isPhoneVerified ? "" : "success"}
+                    disabled={formValue.isPhoneVerified}
+                >
+                    {!formValue.isPhoneVerified
+                        ? "본인인증 받기"
+                        : "본인인증 완료"}
+                </button>
             </PhoneAuthorization>
             <span>
                 만 14세 미만 회원은 법정대리인(부모님) 동의를 받은
@@ -72,5 +112,11 @@ const PhoneAuthorization = styled(LabelInput)`
         font-size: 0.6rem;
         font-weight: 400;
         color: ${Colors.black3};
+
+        &.success {
+            background-color: ${Colors.white};
+            border: 1px solid ${Colors.white};
+            color: ${Colors.primary};
+        }
     }
 `;
