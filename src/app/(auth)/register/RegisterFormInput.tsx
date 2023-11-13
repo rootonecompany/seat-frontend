@@ -10,8 +10,8 @@ export interface Props {
     handleInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
     isPassCheck?: string;
     setIsPassCheck?: React.Dispatch<React.SetStateAction<string>>;
-    isStrongUserId?: () => boolean;
-    isStrongPassword?: () => boolean;
+    isStrongUserId?: boolean;
+    isStrongPassword?: boolean;
     isSamePassword?: () => boolean;
 }
 
@@ -37,7 +37,7 @@ export default function RegsiterFormInput({
                     <button>중복확인</button>
                 </LabelInputDubleCheck>
                 {formValue.userId !== "" ? (
-                    isStrongUserId && !isStrongUserId() ? (
+                    !isStrongUserId ? (
                         <span>숫자, 영문 포함 6자이상 입력해주세요.</span>
                     ) : (
                         <span className="available">
@@ -56,7 +56,7 @@ export default function RegsiterFormInput({
                     onChange={handleInputValue}
                 />
                 {formValue.password !== "" ? (
-                    isStrongPassword && !isStrongPassword() ? (
+                    !isStrongPassword ? (
                         <span>
                             숫자, 영문, 특수문자 포함 10~16자리로 입력해주세요.
                         </span>

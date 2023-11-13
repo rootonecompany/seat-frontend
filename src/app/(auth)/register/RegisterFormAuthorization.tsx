@@ -2,13 +2,15 @@
 
 import LabelInput from "@/components/input/LabelInput";
 import { Props as FormType } from "./RegisterFormInput";
+import { verification } from "@/utils/getVerification";
 import { RegisterType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import useModal from "@/hooks/useModal";
+import FailModal from "@/components/modal/modalcontents/FailModal";
 
-interface Props extends Omit<FormType, "formValue"> {
+interface Props extends FormType {
     phoneValue: string;
-    formValue: RegisterType;
     setFormValue: React.Dispatch<React.SetStateAction<RegisterType>>;
 }
 
@@ -18,31 +20,34 @@ export default function RegisterFormAuthorization({
     formValue,
     setFormValue,
 }: Props) {
+    const { openModal } = useModal();
     const handleVerification = () => {
-        if (formValue.name === "" || formValue.phone === "") return;
-        if (!window.IMP) return;
-        const IMP = window.IMP;
-        IMP.init("imp54817857");
-        IMP.certification(
-            {
-                pg: "danal",
-                merchant_uid: "merchant_" + new Date().getTime(),
-                name: formValue.name,
-                phone: formValue.phone,
-                popup: false,
+        if (formValue.name === "" || formValue.phone === "")
+            return handleFailModal();
+        verification({
+            name: formValue.name,
+            phone: formValue.phone,
+            successCallback: () => {
+                console.log("본인인증에 성공했습니다.");
+                setFormValue((prev) => ({ ...prev, isPhoneVerified: true }));
             },
-            (rsp) => {
-                if (rsp.success) {
-                    console.log(rsp);
-                    setFormValue({
-                        ...formValue,
-                        isPhoneVerified: true,
-                    });
-                } else {
-                    console.log(rsp);
-                }
-            }
-        );
+            failCallback: () => {
+                console.log("본인인증에 실패했습니다.");
+            },
+        });
+    };
+
+    const handleFailModal = () => {
+        const modal = openModal({
+            component() {
+                return (
+                    <FailModal
+                        text="이름과 휴대폰번호를 모두 입력해주세요."
+                        close={modal.close}
+                    />
+                );
+            },
+        });
     };
 
     return (
@@ -53,6 +58,7 @@ export default function RegisterFormAuthorization({
                 id="username"
                 name="name"
                 onChange={handleInputValue}
+                disabled={formValue.isPhoneVerified}
             />
             <PhoneAuthorization
                 label="휴대폰 번호"
@@ -61,6 +67,7 @@ export default function RegisterFormAuthorization({
                 name="phone"
                 value={phoneValue}
                 onChange={handleInputValue}
+                disabled={formValue.isPhoneVerified}
             >
                 <button
                     onClick={handleVerification}
@@ -114,8 +121,8 @@ const PhoneAuthorization = styled(LabelInput)`
         color: ${Colors.black3};
 
         &.success {
-            background-color: ${Colors.white};
-            border: 1px solid ${Colors.white};
+            background-color: transparent;
+            border: none;
             color: ${Colors.primary};
         }
     }

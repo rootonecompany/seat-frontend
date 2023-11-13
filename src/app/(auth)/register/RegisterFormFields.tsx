@@ -9,6 +9,7 @@ import { RegisterType } from "@/interface";
 import { Register } from "@/apis/api/auth/auth";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { isEmpty, isPatternPassword, isPatternUserId } from "@/utils/pattern";
 
 export default function RegisterFormFields() {
     const [isPassCheck, setIsPassCheck] = useState<string>("");
@@ -21,26 +22,23 @@ export default function RegisterFormFields() {
             isPhoneVerified: false,
         });
 
-    const isStrongUserId = () => {
-        const userIdPattern = /^[A-Za-z0-9]{6,}$/;
-        return userIdPattern.test(formValue.userId);
-    };
-    const isStrongPassword = () => {
-        const passwordPattern =
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/;
-        return passwordPattern.test(formValue.password);
-    };
+    const isStrongUserId = isPatternUserId(formValue.userId);
+    const isStrongPassword = isPatternPassword(formValue.password);
+    const userIdEmpty = isEmpty(formValue.userId);
+    const passwordEmpty = isEmpty(formValue.password);
+    const nameEmpty = isEmpty(formValue.name);
+    const phoneEmpty = isEmpty(formValue.phone);
     const isSamePassword = () => {
         return formValue.password === isPassCheck;
     };
     const calculateIsDisabled = () => {
         return (
-            formValue.userId === "" ||
-            formValue.password === "" ||
-            formValue.name === "" ||
-            formValue.phone === "" ||
-            !isStrongUserId() ||
-            !isStrongPassword() ||
+            userIdEmpty ||
+            passwordEmpty ||
+            nameEmpty ||
+            phoneEmpty ||
+            !isStrongUserId ||
+            !isStrongPassword ||
             !isSamePassword() ||
             !formValue.isPhoneVerified
         );
@@ -73,7 +71,7 @@ export default function RegisterFormFields() {
             <RegisterButton
                 sizeType="main"
                 disabled={calculateIsDisabled()}
-                onClick={() => Register(formValue)}
+                onClick={handleRegister}
             >
                 가입하기
             </RegisterButton>

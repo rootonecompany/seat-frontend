@@ -12,6 +12,7 @@ export default function useModal() {
             close: () => closeModal(key),
         };
         setModals([...modals, nextProps]);
+        return nextProps;
     };
 
     const closeModal = (key: string) => {

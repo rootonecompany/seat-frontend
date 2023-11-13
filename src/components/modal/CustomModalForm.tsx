@@ -44,8 +44,9 @@ const ModalContent = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: max-content;
     background: white;
+    border-radius: 0.3rem;
+    overflow: hidden;
     z-index: 1000;
 `;
