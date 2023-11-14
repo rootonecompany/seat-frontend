@@ -1,7 +1,8 @@
 "use client";
 
 import LabelInput from "@/components/input/LabelInput";
-import { RegisterType } from "@/interface";
+import { RegisterType } from "@/interface/data.type";
+
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 import { getUserIdDuplicateCheck } from "@/apis/api/auth/auth";

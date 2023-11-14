@@ -26,7 +26,7 @@ export default function TicketRankTabButton({
 }: Props) {
     return (
         <TabButtonWrapper>
-            {/* <SwipperWrapper {...options}>
+            <SwipperWrapper {...options}>
                 {item.map((item, index) => (
                     <SwiperSlide key={item.distributor}>
                         <TabStyledButton
@@ -37,7 +37,7 @@ export default function TicketRankTabButton({
                         </TabStyledButton>
                     </SwiperSlide>
                 ))}
-            </SwipperWrapper> */}
+            </SwipperWrapper>
         </TabButtonWrapper>
     );
 }
@@ -57,7 +57,7 @@ const TabStyledButton = styled.div`
     font-size: 0.7rem;
     font-weight: 500;
     color: ${Colors.black3};
-
+    text-transform: uppercase;
     &.active {
         background-color: ${Colors.primary};
         border-color: ${Colors.primary};

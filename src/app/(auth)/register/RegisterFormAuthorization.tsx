@@ -3,7 +3,8 @@
 import LabelInput from "@/components/input/LabelInput";
 import { Props as FormType } from "./RegisterFormInput";
 import { verification } from "@/utils/getVerification";
-import { RegisterType } from "@/interface";
+import { RegisterType } from "@/interface/data.type";
+
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 import useModal from "@/hooks/useModal";

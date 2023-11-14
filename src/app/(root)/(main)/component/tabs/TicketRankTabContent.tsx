@@ -2,19 +2,20 @@
 
 import Image from "next/image";
 
-import { TicketRankingType } from "@/interface/data.type";
+import { TicketRankType } from "@/interface/data.type";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 interface Props {
-    item: TicketRankingType[];
+    item: TicketRankType;
 }
 
 export default function TicketRankTabContent({ item }: Props) {
+    console.log(item);
     return (
         <TabContentWrapper>
             <TabContent>
-                {item.slice(0, 5).map((item) => (
+                {item.ranking.slice(0, 5).map((item) => (
                     <TabContentItem key={item.rank}>
                         <Image
                             src={item.image}

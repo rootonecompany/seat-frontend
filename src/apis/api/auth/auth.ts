@@ -3,7 +3,7 @@ import {
     RegisterReturnType,
     RegisterType,
     UserIdDuplicateCheckReturnType,
-} from "@/interface";
+} from "@/interface/data.type";
 
 export const getUserIdDuplicateCheck = async (userId: string) => {
     const response = await api.get<UserIdDuplicateCheckReturnType>(

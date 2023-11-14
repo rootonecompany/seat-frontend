@@ -12,14 +12,13 @@ import { TicketRankType } from "@/interface/data.type";
 export default function TicketRank() {
     const [rankData, setRankData] = useState<TicketRankType[]>([]);
     const { tab, changeTab } = useTab(0);
-    // const tabContentData = rankData.map((item) => item.ranking[tab]);
+    const tabContentData = rankData.find((_, index) => index === tab);
     useEffect(() => {
         getTicketRank().then((res) => {
             setRankData(res);
         });
     }, []);
 
-    console.log(getTicketRank());
     return (
         <Wrap>
             <Title
@@ -33,9 +32,9 @@ export default function TicketRank() {
                     tab={tab}
                     handleChangeTab={changeTab}
                 />
-                {/* {tabContentData && (
+                {tabContentData && (
                     <TicketRankTabContent item={tabContentData} />
-                )} */}
+                )}
             </div>
         </Wrap>
     );

@@ -5,7 +5,8 @@ import Button from "@/components/Button";
 import RegsiterFormInput from "./RegisterFormInput";
 import RegisterFormAuthorization from "./RegisterFormAuthorization";
 import { useInput } from "@/hooks/useInput";
-import { RegisterType } from "@/interface";
+import { RegisterType } from "@/interface/data.type";
+
 import { Register } from "@/apis/api/auth/auth";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
