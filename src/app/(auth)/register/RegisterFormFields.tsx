@@ -10,6 +10,7 @@ import { Register } from "@/apis/api/auth/auth";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 import { isEmpty, isPatternPassword, isPatternUserId } from "@/utils/pattern";
+import { getAccessTokenCookie } from "@/apis/instance.api";
 
 export default function RegisterFormFields() {
     const [isPassCheck, setIsPassCheck] = useState<string>("");
@@ -48,6 +49,8 @@ export default function RegisterFormFields() {
         const res = await Register(formValue);
         console.log(res);
     };
+
+    console.log(getAccessTokenCookie());
 
     return (
         <Block>

@@ -1,4 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { Cookies } from "react-cookie";
+
+const cookie = new Cookies();
 
 const axiosConfig: AxiosRequestConfig = {
     baseURL: "http://pjy4952.cafe24.com:8000",
@@ -8,6 +11,11 @@ const axiosConfig: AxiosRequestConfig = {
 };
 
 export const api = axios.create(axiosConfig);
-// api.defaults.withCredentials = true;
-
 export const authorizationApi = axios.create(axiosConfig);
+
+export const setAccessTookenCookie = (accessToken: string) => {
+    cookie.set("accessToken", accessToken, { path: "/" });
+};
+export const getAccessTokenCookie = () => {
+    return cookie.get("accessToken");
+};

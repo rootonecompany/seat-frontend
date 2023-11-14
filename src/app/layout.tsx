@@ -30,9 +30,11 @@ export default function RootLayout({
                     <ReactQueryProvider>
                         <StyledComponentsRegistry>
                             <GlobalStyle />
-                            <BasicLayout>{children}</BasicLayout>
-                            <Modal />
-                            <Menu />
+                            <BasicLayout>
+                                {children}
+                                <Modal />
+                                <Menu />
+                            </BasicLayout>
                         </StyledComponentsRegistry>
                     </ReactQueryProvider>
                 </RecoilProvider>

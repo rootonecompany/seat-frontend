@@ -52,6 +52,9 @@ export interface RegisterReturnType {
     accessToken: string;
     expireIn: number;
 }
+export interface UserIdDuplicateCheckReturnType {
+    result: boolean;
+}
 
 export interface ChildrenProps {
     children: React.ReactNode;
@@ -85,19 +88,6 @@ export interface UserFormRegister {
     email: string;
     password: string;
     checkbox: boolean;
-}
-
-// Certificate Type
-interface RequestCertificate {
-    name: string;
-    phone: string;
-    birth: string;
-    gender_digit: string;
-    carrier: string;
-    is_mvno: boolean;
-    company: string;
-    merchant_uid: string;
-    pg: string;
 }
 
 // Form Type
@@ -155,18 +145,6 @@ export interface PopularTicketType {
     title: string;
     date: string;
     genre: string;
-    image: StaticImageData;
-}
-
-export interface TicketRankType {
-    id: number;
-    name: string;
-    ranking: TicketRankingType[];
-}
-export interface TicketRankingType {
-    rank: number;
-    title: string;
-    date: string;
     image: StaticImageData;
 }
 

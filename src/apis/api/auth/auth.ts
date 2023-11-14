@@ -1,10 +1,27 @@
-import { api } from "@/apis/instance.api";
-import { RegisterReturnType, RegisterType } from "@/interface";
+import { api, setAccessTookenCookie } from "@/apis/instance.api";
+import {
+    RegisterReturnType,
+    RegisterType,
+    UserIdDuplicateCheckReturnType,
+} from "@/interface";
+
+export const getUserIdDuplicateCheck = async (userId: string) => {
+    const response = await api.get<UserIdDuplicateCheckReturnType>(
+        `/user/duplication/${userId}`
+    );
+
+    return response.data;
+};
 
 export const Register = async (data: RegisterType) => {
-    await api
-        .post<RegisterReturnType>("/authentication/register", data)
-        .then((res) => {
-            console.log(res.headers);
-        });
+    !data && false;
+    try {
+        const response = await api.post<RegisterReturnType>(
+            "/authentication/register",
+            data
+        );
+        setAccessTookenCookie(response.headers["authorization"]);
+    } catch (error) {
+        console.error(error);
+    }
 };

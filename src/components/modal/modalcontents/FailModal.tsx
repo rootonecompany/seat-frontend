@@ -20,6 +20,7 @@ export default function FailModal({ text, close }: Props) {
 }
 
 const Block = styled.div`
+    min-width: 15rem;
     display: flex;
     flex-direction: column;
     padding: 0 0.5rem 0.5rem;

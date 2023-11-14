@@ -1,168 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Wrap from "@/components/template/Wrap";
 import Title from "@/components/Title";
 import TicketRankTabButton from "@/app/(root)/(main)/component/tabs/TicketRankTabButton";
 import TicketRankTabContent from "./component/tabs/TicketRankTabContent";
-
 import { useTab } from "@/hooks/useTab";
-
-import { TicketRankType } from "@/interface";
-
-const TabData: TicketRankType[] = [
-    {
-        id: 1,
-        name: "인터파크",
-        ranking: [
-            {
-                rank: 1,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 2,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 3,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 4,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 5,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-        ],
-    },
-    {
-        id: 2,
-        name: "YES24",
-        ranking: [
-            {
-                rank: 1,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 2,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 3,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 4,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 5,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-        ],
-    },
-    {
-        id: 3,
-        name: "티켓링크",
-        ranking: [
-            {
-                rank: 1,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 2,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 3,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 4,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 5,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-        ],
-    },
-    {
-        id: 4,
-        name: "멜론티켓",
-        ranking: [
-            {
-                rank: 1,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 2,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 3,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-            {
-                rank: 4,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample,
-            },
-            {
-                rank: 5,
-                title: "2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…2023 영탁 단독 콘서트 Tak 2023 영탁 단독 콘서트 Tak S…",
-                date: "2023.10.27 ~ 2024.01.02",
-                image: Sample2,
-            },
-        ],
-    },
-];
-
-import Sample from "public/images/sample/sample_concert.png";
-import Sample2 from "public/images/sample/sample_concert2.png";
+import { getTicketRank } from "@/apis/api/performance/performance";
+import { TicketRankType } from "@/interface/data.type";
 
 export default function TicketRank() {
-    const { tab, changeTab } = useTab(1);
-    const tabContentData = TabData.find((item) => item.id === tab);
+    const [rankData, setRankData] = useState<TicketRankType[]>([]);
+    const { tab, changeTab } = useTab(0);
+    // const tabContentData = rankData.map((item) => item.ranking[tab]);
+    useEffect(() => {
+        getTicketRank().then((res) => {
+            setRankData(res);
+        });
+    }, []);
 
+    console.log(getTicketRank());
     return (
         <Wrap>
             <Title
@@ -172,13 +29,13 @@ export default function TicketRank() {
             />
             <div>
                 <TicketRankTabButton
-                    item={TabData}
+                    item={rankData}
                     tab={tab}
                     handleChangeTab={changeTab}
                 />
-                {tabContentData && (
+                {/* {tabContentData && (
                     <TicketRankTabContent item={tabContentData} />
-                )}
+                )} */}
             </div>
         </Wrap>
     );

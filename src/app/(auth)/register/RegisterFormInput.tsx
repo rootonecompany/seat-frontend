@@ -4,6 +4,10 @@ import LabelInput from "@/components/input/LabelInput";
 import { RegisterType } from "@/interface";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { getUserIdDuplicateCheck } from "@/apis/api/auth/auth";
+import { useState } from "react";
+import useModal from "@/hooks/useModal";
+import FailModal from "@/components/modal/modalcontents/FailModal";
 
 export interface Props {
     formValue: RegisterType;
@@ -24,6 +28,37 @@ export default function RegsiterFormInput({
     isStrongPassword,
     isSamePassword,
 }: Props) {
+    const { openModal } = useModal();
+
+    const [isDuplicate, setIsDuplicate] = useState<boolean>(false);
+
+    const handleIdDuplicateCheck = async (userId: string) => {
+        if (userId === "") return handleSuccessModal();
+        try {
+            const response = await getUserIdDuplicateCheck(userId);
+
+            if (response.result) {
+                setIsDuplicate(true);
+            } else {
+                setIsDuplicate(false);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const handleSuccessModal = () => {
+        const modal = openModal({
+            component() {
+                return (
+                    <FailModal
+                        text="아이디를 입력해주세요."
+                        close={modal.close}
+                    />
+                );
+            },
+        });
+    };
+
     return (
         <InputWrapper>
             <InputItemWrap>
@@ -33,18 +68,22 @@ export default function RegsiterFormInput({
                     id="id"
                     name="userId"
                     onChange={handleInputValue}
+                    disabled={isDuplicate}
                 >
-                    <button>중복확인</button>
+                    <button
+                        onClick={() => handleIdDuplicateCheck(formValue.userId)}
+                    >
+                        중복확인
+                    </button>
                 </LabelInputDubleCheck>
-                {formValue.userId !== "" ? (
-                    !isStrongUserId ? (
-                        <span>숫자, 영문 포함 6자이상 입력해주세요.</span>
-                    ) : (
-                        <span className="available">
-                            사용 가능한 아이디입니다.
-                        </span>
-                    )
-                ) : null}
+                {formValue.userId !== ""
+                    ? !isStrongUserId && (
+                          <span>숫자, 영문 포함 6자이상 입력해주세요.</span>
+                      )
+                    : null}
+                {isDuplicate && (
+                    <span className="available">사용 가능한 아이디입니다.</span>
+                )}
             </InputItemWrap>
             <InputItemWrap>
                 <LabelInput

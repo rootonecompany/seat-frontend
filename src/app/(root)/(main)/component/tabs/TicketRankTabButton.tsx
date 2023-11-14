@@ -3,10 +3,10 @@
 import SwipperWrapper from "../../../../../components/swiper/SwiperWrapper";
 import { SwiperSlide } from "swiper/react";
 import { SwiperOptions } from "swiper/types";
-import { TicketRankType } from "@/interface";
 
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
+import { TicketRankType } from "@/interface/data.type";
 
 interface Props {
     item: TicketRankType[];
@@ -26,18 +26,18 @@ export default function TicketRankTabButton({
 }: Props) {
     return (
         <TabButtonWrapper>
-            <SwipperWrapper {...options}>
+            {/* <SwipperWrapper {...options}>
                 {item.map((item, index) => (
-                    <SwiperSlide key={item.id}>
+                    <SwiperSlide key={item.distributor}>
                         <TabStyledButton
-                            onClick={() => handleChangeTab(item.id)}
-                            className={tab === index + 1 ? "active" : ""}
+                            onClick={() => handleChangeTab(index)}
+                            className={tab === index ? "active" : ""}
                         >
-                            {item.name}
+                            {item.distributor}
                         </TabStyledButton>
                     </SwiperSlide>
                 ))}
-            </SwipperWrapper>
+            </SwipperWrapper> */}
         </TabButtonWrapper>
     );
 }

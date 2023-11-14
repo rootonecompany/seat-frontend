@@ -1,19 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { TicketRankType } from "@/interface";
-import { Colors } from "@/styles/Colors";
+
+import { TicketRankingType } from "@/interface/data.type";
 import styled from "styled-components";
+import { Colors } from "@/styles/Colors";
 
 interface Props {
-    item: TicketRankType;
+    item: TicketRankingType[];
 }
 
 export default function TicketRankTabContent({ item }: Props) {
     return (
         <TabContentWrapper>
             <TabContent>
-                {item.ranking.map((item) => (
+                {item.slice(0, 5).map((item) => (
                     <TabContentItem key={item.rank}>
                         <Image
                             src={item.image}

@@ -1,5 +1,5 @@
-import { Modal } from "@/interface";
 import { atom } from "recoil";
+import { Modal } from "@/interface";
 
 export const modalState = atom<Modal[]>({
     key: "modalState",
@@ -15,3 +15,5 @@ export const headerScrollState = atom<boolean>({
     key: "headerScrollState",
     default: false,
 });
+
+const cookieEffect = (accessToken: string) => {};
