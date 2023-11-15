@@ -4,14 +4,16 @@ import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 interface Props {
-    text: string;
+    title?: string;
+    text?: string;
     close?: () => void;
 }
 
-export default function FailModal({ text, close }: Props) {
+export default function FailModal({ title, text, close }: Props) {
     return (
         <Block>
             <WraningWrapper>
+                <h6>{title}</h6>
                 <span>{text}</span>
             </WraningWrapper>
             <ConfirmButton onClick={close}>확인</ConfirmButton>
@@ -20,30 +22,37 @@ export default function FailModal({ text, close }: Props) {
 }
 
 const Block = styled.div`
-    min-width: 15rem;
+    min-width: 16.2rem;
     display: flex;
     flex-direction: column;
-    padding: 0 0.5rem 0.5rem;
 `;
 const WraningWrapper = styled.div`
     width: 100%;
-    height: 3rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 0;
+    gap: 0.3rem;
+    padding: 2.4rem 0 1.9rem;
+    border-bottom: 1px solid ${Colors.line2};
+    h6 {
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1.3;
+        color: ${Colors.black3};
+    }
     span {
         font-size: 0.7rem;
-        font-weight: 500;
-        color: ${Colors.black3};
+        font-weight: 400;
+        color: ${Colors.black2};
     }
 `;
 const ConfirmButton = styled.button`
     width: 100%;
-    height: 2rem;
-    background-color: ${Colors.primary};
+    height: 2.5rem;
+    background-color: ${Colors.white};
     border-radius: 0.2rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    color: ${Colors.white};
+    color: ${Colors.primary};
 `;

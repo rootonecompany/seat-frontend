@@ -37,7 +37,7 @@ const Overlay = styled.div`
     width: 100%;
     height: 100%;
     z-index: 999;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
 `;
 const ModalContent = styled.div`
     position: fixed;
@@ -46,7 +46,7 @@ const ModalContent = styled.div`
     transform: translate(-50%, -50%);
     width: max-content;
     background: white;
-    border-radius: 0.3rem;
+    border-radius: 0.6rem;
     overflow: hidden;
     z-index: 1000;
 `;

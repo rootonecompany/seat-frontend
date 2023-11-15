@@ -43,7 +43,8 @@ export default function RegisterFormAuthorization({
             component() {
                 return (
                     <FailModal
-                        text="이름과 휴대폰번호를 모두 입력해주세요."
+                        title="이름과 휴대폰번호를 모두 입력해주세요."
+                        text="이름과 휴대폰번호가 입력되지 않았습니다."
                         close={modal.close}
                     />
                 );

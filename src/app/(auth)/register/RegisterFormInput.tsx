@@ -52,7 +52,8 @@ export default function RegsiterFormInput({
             component() {
                 return (
                     <FailModal
-                        text="아이디를 입력해주세요."
+                        title="아이디를 입력해주세요."
+                        text="아이디가 입력되지 않았습니다."
                         close={modal.close}
                     />
                 );
