@@ -36,3 +36,24 @@ export interface RegisterReturnType {
 export interface UserIdDuplicateCheckReturnType {
     result: boolean;
 }
+// find type
+export interface UserFindIdType {
+    name: string;
+    phone: string;
+}
+export interface UserFindIdReturnType {
+    userId: string;
+}
+export interface UserFindPasswordType extends UserFindIdType {
+    userId?: string;
+}
+export interface UserFindPasswordReturnType {
+    result: boolean;
+}
+export interface UserPasswordUpdateType {
+    userId?: string;
+    password: string;
+}
+export interface UserPasswordUpdateReturnType {
+    result: boolean;
+}

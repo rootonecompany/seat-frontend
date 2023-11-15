@@ -2,13 +2,13 @@
 
 import LabelInput from "@/components/input/LabelInput";
 import { RegisterType } from "@/interface/data.type";
-
-import styled from "styled-components";
-import { Colors } from "@/styles/Colors";
 import { getUserIdDuplicateCheck } from "@/apis/api/auth/auth";
 import { useState } from "react";
 import useModal from "@/hooks/useModal";
-import FailModal from "@/components/modal/modalcontents/FailModal";
+import ButtonModal from "@/components/modal/modalcontents/ButtonModal";
+
+import styled from "styled-components";
+import { Colors } from "@/styles/Colors";
 
 export interface Props {
     formValue: RegisterType;
@@ -51,9 +51,10 @@ export default function RegsiterFormInput({
         const modal = openModal({
             component() {
                 return (
-                    <FailModal
+                    <ButtonModal
                         title="아이디를 입력해주세요."
                         text="아이디가 입력되지 않았습니다."
+                        basicText="확인"
                         close={modal.close}
                     />
                 );

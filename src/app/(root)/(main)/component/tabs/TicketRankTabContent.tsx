@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function TicketRankTabContent({ item }: Props) {
-    console.log(item);
     return (
         <TabContentWrapper>
             <TabContent>

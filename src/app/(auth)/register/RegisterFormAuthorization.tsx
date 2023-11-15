@@ -4,11 +4,11 @@ import LabelInput from "@/components/input/LabelInput";
 import { Props as FormType } from "./RegisterFormInput";
 import { verification } from "@/utils/getVerification";
 import { RegisterType } from "@/interface/data.type";
+import useModal from "@/hooks/useModal";
+import ButtonModal from "@/components/modal/modalcontents/ButtonModal";
 
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
-import useModal from "@/hooks/useModal";
-import FailModal from "@/components/modal/modalcontents/FailModal";
 
 interface Props extends FormType {
     phoneValue: string;
@@ -42,9 +42,10 @@ export default function RegisterFormAuthorization({
         const modal = openModal({
             component() {
                 return (
-                    <FailModal
+                    <ButtonModal
                         title="이름과 휴대폰번호를 모두 입력해주세요."
                         text="이름과 휴대폰번호가 입력되지 않았습니다."
+                        basicText="확인"
                         close={modal.close}
                     />
                 );
