@@ -5,13 +5,19 @@ import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
 import MoreWhite from "public/images/icons/icon_more_white.png";
+import { useDynamicRouter } from "@/hooks/useDynamicRoute";
 
 export default function TicketingSeat() {
+    const { id, handleDynamicRouter } = useDynamicRouter();
     return (
         <Block>
             <SeatHeader>
                 <span>오후 7:30</span>
-                <button>
+                <button
+                    onClick={() => {
+                        handleDynamicRouter(`/detail/ticketing/seat/${id}`);
+                    }}
+                >
                     좌석선택
                     <Image
                         src={MoreWhite}

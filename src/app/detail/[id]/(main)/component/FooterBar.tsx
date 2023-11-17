@@ -8,18 +8,13 @@ import { Colors } from "@/styles/Colors";
 import HeartOn from "public/images/icons/icon_heart_on.png";
 import HeartOff from "public/images/icons/icon_heart_off.png";
 import Share from "public/images/icons/icon_share.png";
-import { useParams, useRouter } from "next/navigation";
+import { useDynamicRouter } from "@/hooks/useDynamicRoute";
 
 export default function FooterBar() {
-    const router = useRouter();
-    const id = useParams().id;
+    const { id, handleDynamicRouter } = useDynamicRouter();
     const [isLike, setIsLike] = useState(false);
     const handleToggleLike = () => {
         setIsLike(!isLike);
-    };
-
-    const handleTicketing = () => {
-        router.push(`/detail/ticketing/${id}`);
     };
 
     return (
@@ -44,7 +39,11 @@ export default function FooterBar() {
                             />
                         </button>
                     </div>
-                    <TicketingButton onClick={handleTicketing}>
+                    <TicketingButton
+                        onClick={() => {
+                            handleDynamicRouter(`/detail/ticketing/${id}`);
+                        }}
+                    >
                         예매하기
                     </TicketingButton>
                 </FooterBarInner>

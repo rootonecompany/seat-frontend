@@ -2,6 +2,8 @@
 
 import HeaderButtonGroup from "./HeaderButtonGroup";
 import HeaderBackButton from "./HeaderBackButton";
+import { useRecoilValue } from "recoil";
+import { headerScrollState } from "@/recoil/atom";
 import styled from "styled-components";
 import { Colors } from "@/styles/Colors";
 
@@ -18,17 +20,24 @@ export default function PrevHeader({
     optionButton,
     overlap = false,
 }: Props) {
+    const isScroll = useRecoilValue(headerScrollState);
     return (
-        <Block>
+        <Block $isOption={optionButton}>
             <HeaderBackButton overlap={overlap} />
-            {label && <span>{label}</span>}
+            {overlap ? (
+                isScroll ? (
+                    <span>{label}</span>
+                ) : null
+            ) : (
+                <span>{label}</span>
+            )}
             {title && <h2>{title}</h2>}
             {optionButton && <HeaderButtonGroup overlap={overlap} />}
         </Block>
     );
 }
 
-const Block = styled.div`
+const Block = styled.div<{ $isOption: boolean | undefined }>`
     position: relative;
     width: 100%;
     height: inherit;
@@ -57,5 +66,11 @@ const Block = styled.div`
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
+
+        ${({ $isOption }) =>
+            !$isOption &&
+            `
+            padding-right:0.9rem;
+        `}
     }
 `;

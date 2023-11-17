@@ -47,11 +47,8 @@ export default function RegisterFormFields() {
     };
 
     const handleRegister = async () => {
-        const res = await Register(formValue);
-        console.log(res);
+        await Register(formValue);
     };
-
-    console.log(getAccessTokenCookie());
 
     return (
         <Block>

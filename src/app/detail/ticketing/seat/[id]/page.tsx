@@ -3,24 +3,21 @@ import Header from "@/components/headers/Header";
 import PrevHeader from "@/components/headers/PrevHeader";
 import Footer from "@/components/footer/Footer";
 import Main from "./(main)/Main";
-import FooterBar from "./(main)/component/FooterBar";
 
-export default function Detail() {
+export default function ReservedSeat() {
     return (
         <Wrap fullWidth={true}>
             <Header
                 headerContent={
                     <PrevHeader
                         label="2023 조용필＆위대한탄생 콘서트_[대구]"
-                        optionButton={true}
-                        overlap={true}
+                        overlap={false}
                     />
                 }
-                overlap={true}
+                overlap={false}
             />
             <Main />
             <Footer />
-            <FooterBar />
         </Wrap>
     );
 }
