@@ -28,6 +28,7 @@ const Page = () => {
     {
       id: 0,
       section: 'A',
+      maxSeats: 0,
       floor: 1,
     },
   ]);
@@ -43,6 +44,7 @@ const Page = () => {
       column: 1,
       count: 10,
       seatRank: '',
+      isEmptySeats: '',
     },
   ]);
 
@@ -180,6 +182,7 @@ const Page = () => {
       {
         id: sections.sort((a, b) => a.id - b.id)[sections.length - 1].id + 1,
         section: '',
+        maxSeats: 0,
         floor: Number(sectionSelect) as number,
       },
     ].sort((a, b) => a.floor - b.floor);
@@ -191,7 +194,13 @@ const Page = () => {
     e: ChangeEvent<HTMLInputElement>,
   ) => {
     const values = [...sections];
-    values[index].section = e.target.value as string;
+
+    if (e.target.name === 'section') {
+      values[index].section = e.target.value as string;
+    } else if (e.target.name === 'maxSeats') {
+      values[index].maxSeats = Number(e.target.value) as unknown as number;
+    }
+
     setSections(values);
   };
 
@@ -232,11 +241,12 @@ const Page = () => {
           floor: Number(columnSelect.floor) as number,
           column: (columnSort[columnSort.length - 1].column + 1) as number,
           count: 10 as number,
+          isEmptySeats: '',
           seatRank: '',
         },
-      ]
-        .sort((a, b) => a.floor - b.floor)
-        .sort((a, b) => a.section.localeCompare(b.section));
+      ];
+      // .sort((a, b) => a.floor - b.floor)
+      // .sort((a, b) => a.section.localeCompare(b.section));
     } else {
       values = [
         ...columns,
@@ -246,11 +256,12 @@ const Page = () => {
           floor: Number(columnSelect.floor) as number,
           column: 1 as number,
           count: 10 as number,
+          isEmptySeats: '',
           seatRank: '',
         },
-      ]
-        .sort((a, b) => a.floor - b.floor)
-        .sort((a, b) => a.section.localeCompare(b.section));
+      ];
+      // .sort((a, b) => a.floor - b.floor)
+      // .sort((a, b) => a.section.localeCompare(b.section));
     }
 
     setColumns(values);
@@ -268,8 +279,10 @@ const Page = () => {
       values[index].count = Number(e.target.value) as unknown as number;
     } else if (e.target.name === 'seatRank') {
       values[index].seatRank = e.target.value as string;
-    } else {
+    } else if (e.target.name === 'isEmptySeats') {
+      values[index].isEmptySeats = e.target.value as string;
     }
+
     setColumns(values);
   };
 
@@ -363,6 +376,21 @@ const Page = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // console.log('mainImage', mainImage);
+    // console.log('detailImage', detailImage);
+    // console.log('title', title);
+    // console.log('subtitle', subtitle);
+    // console.log('rating', rating);
+    // console.log('runningTime', runningTime);
+    // console.log('startDate', startDate);
+    // console.log('endDate', endDate);
+    // console.log('startAts', startAts);
+    // console.log('places', places);
+    // console.log('seatRanks', seatRanks);
+    // console.log('floors', floors);
+    // console.log('sections', sections);
+    // console.log('columns', columns);
+    // return;
     if (mainImage && detailImage) {
       const formData = new FormData();
       formData.append('vendor_main_image', mainImage);
@@ -749,7 +777,20 @@ const Page = () => {
                       onChange={(e) => handleInputChangeSection(index, e)}
                       style={{ marginRight: 10 }}
                     />
-                    구역
+                    <span style={{ fontSize: '18px', paddingRight: '10px' }}>
+                      구역
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="25"
+                      name="maxSeats"
+                      value={section.maxSeats}
+                      onChange={(e) => handleInputChangeSection(index, e)}
+                      style={{ marginRight: 10, width: '50px' }}
+                    />
+                    <span style={{ fontSize: '18px', paddingRight: '10px' }}>
+                      임의의 열에 대한 최대 좌석 수
+                    </span>
                     <button
                       type="button"
                       onClick={() => handleRemoveSection(section.id)}
@@ -782,8 +823,8 @@ const Page = () => {
           </div>
           <div className="columnsContainer">
             {columns
-              .sort((a, b) => a.floor - b.floor)
-              .sort((a, b) => a.section.localeCompare(b.section))
+              // .sort((a, b) => a.floor - b.floor)
+              // .sort((a, b) => a.section.localeCompare(b.section))
               .map((column, index) => {
                 return (
                   <div
@@ -834,6 +875,16 @@ const Page = () => {
                       })}
                     </select>
                     <span>석</span>
+                    <select
+                      name="isEmptySeats"
+                      onChange={(e) => handleInputChangeColumn(index, e)}
+                    >
+                      <option value={''}>선택</option>
+                      <option value={'none'}>없음</option>
+                      <option value={'left'}>왼쪽</option>
+                      <option value={'right'}>오른쪽</option>
+                    </select>
+                    <span>자리 없음</span>
                     <button
                       type="button"
                       onClick={() => handleRemoveColumn(column.id)}
