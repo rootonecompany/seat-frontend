@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import SwipperWrapper from "@/components/swiper/SwiperWrapper";
 import { SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -57,10 +58,18 @@ const options: SwiperOptions = {
 import Concert from "public/images/sample/sample_concert.png";
 
 export default function BannerSwiper() {
+    const router = useRouter();
+    const handleRouting = (id: number) => {
+        router.push(`/detail/${id}`);
+    };
+
     return (
         <SwipperWrapper {...options}>
             {data.map((item) => (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide
+                    key={item.id}
+                    onClick={() => handleRouting(item.id)}
+                >
                     <BannerSlideItem item={item} />
                 </SwiperSlide>
             ))}
