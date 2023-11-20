@@ -13,7 +13,7 @@ export default function SeatMap() {
     );
 }
 
-const Block = styled.div`
+const Block = styled.section`
     position: relative;
     width: 100%;
     height: 18.5rem;

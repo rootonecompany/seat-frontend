@@ -17,6 +17,8 @@ export const Colors = {
     line4: "#e7eef2",
     line5: "#e6e6e6",
     line6: "#e0e0e0",
+    line7: "#dcdcdc",
+    disabled0: "#f4f4f4",
     disabled1: "#f4f6f7",
     disabled2: "#f5f5f5",
     disabled3: "#e9e9e9",

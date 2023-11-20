@@ -21,7 +21,7 @@ export default function SeatBody() {
     );
 }
 
-const Block = styled.div`
+const Block = styled.section`
     padding: 1.5rem 0.9rem 1.95rem;
 `;
 const TitleWrapper = styled.div`

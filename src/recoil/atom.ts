@@ -16,4 +16,9 @@ export const headerScrollState = atom<boolean>({
     default: false,
 });
 
+export const selectedSeatState = atom<string>({
+    key: "selectedSeatState",
+    default: "",
+});
+
 const cookieEffect = (accessToken: string) => {};

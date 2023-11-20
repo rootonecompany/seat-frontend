@@ -139,3 +139,14 @@ export interface ReviewType {
     image: StaticImageData;
     rating: number;
 }
+
+export interface RealTimeSeatType {
+    id: number;
+    name: string;
+    seat: SeatType[];
+}
+
+export interface SeatType {
+    id: number;
+    state: number;
+}
