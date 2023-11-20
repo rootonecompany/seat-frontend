@@ -4,38 +4,38 @@ import { useGetPost, usePatchPost } from "@/hooks/useApi";
 import { useState, ChangeEvent } from "react";
 import styled from "styled-components";
 
-export default function PostDetail({ id }: { id: number }) {
-    const { data } = useGetPost(id);
-    const [title, setTitle] = useState<string>("");
-    const [body, setBody] = useState<string>("");
+export default function PostDetail() {
+    // const { data } = useGetPost(id);
+    // const [title, setTitle] = useState<string>("");
+    // const [body, setBody] = useState<string>("");
 
-    const patchPostMutation = usePatchPost();
+    // const patchPostMutation = usePatchPost();
 
-    const handleTitlePatchPost = async () => {
-        try {
-            await patchPostMutation.mutateAsync({
-                id: id,
-                post: { title: title },
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const handleTitlePatchPost = async () => {
+    //     try {
+    //         await patchPostMutation.mutateAsync({
+    //             id: id,
+    //             post: { title: title },
+    //         });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-    const handleBodyPatchPost = async () => {
-        try {
-            await patchPostMutation.mutateAsync({
-                id: id,
-                post: { body: body },
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const handleBodyPatchPost = async () => {
+    //     try {
+    //         await patchPostMutation.mutateAsync({
+    //             id: id,
+    //             post: { body: body },
+    //         });
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     return (
         <div>
-            <h1>{data?.title}</h1>
+            {/* <h1>{data?.title}</h1>
             <span>{data?.body}</span>
 
             <FormBox>
@@ -55,7 +55,7 @@ export default function PostDetail({ id }: { id: number }) {
                     }}
                 />
                 <button onClick={handleBodyPatchPost}>본문 수정하기</button>
-            </FormBox>
+            </FormBox> */}
         </div>
     );
 }

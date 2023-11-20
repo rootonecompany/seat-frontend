@@ -5,13 +5,13 @@ import HydrateClient from "@/lib/HydrateClient";
 import { getPosts } from "@/apis/api/posts";
 
 export default async function Post() {
-    const queryClient = getQueryClient();
-    await queryClient.prefetchQuery(["posts"], getPosts);
-    const dehydratedState = dehydrate(queryClient);
+    // const queryClient = getQueryClient();
+    // await queryClient.prefetchQuery(["posts"], getPosts);
+    // const dehydratedState = dehydrate(queryClient);
 
     return (
-        <HydrateClient state={dehydratedState}>
-            <Posts />
-        </HydrateClient>
+        <Posts />
+        // <HydrateClient state={dehydratedState}>
+        // </HydrateClient>
     );
 }

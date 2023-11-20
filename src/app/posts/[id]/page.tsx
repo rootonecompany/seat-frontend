@@ -9,14 +9,14 @@ export default async function DetailPage({
 }: {
     params: { id: string };
 }) {
-    const id = Number(params.id);
-    const queryClient = getQueryClient();
-    await queryClient.prefetchQuery(["post", id], () => getPost(id));
-    const dehydrateState = dehydrate(queryClient);
+    // const id = Number(params.id);
+    // const queryClient = getQueryClient();
+    // await queryClient.prefetchQuery(["post", id], () => getPost(id));
+    // const dehydrateState = dehydrate(queryClient);
 
     return (
-        <HydrateClient state={dehydrateState}>
-            <PostDetail id={id} />
-        </HydrateClient>
+        <PostDetail />
+        // <HydrateClient state={dehydrateState}>
+        // {/* </HydrateClient> */}
     );
 }

@@ -1,31 +1,15 @@
 "use client";
 
-import { useGetPosts, useCreatePost } from "@/hooks/useApi";
 import { Post } from "@/interface";
-import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
 
 export default function Posts() {
-    const { data } = useGetPosts();
-
     const [posts, setPosts] = useState<Post>({
         userId: 1,
         title: "",
         body: "",
     });
-
-    const createPostMutation = useCreatePost();
-
-    const handleCreatePost = async (newPost: Post) => {
-        try {
-            const id = data!.length + 1;
-            const newPostWithId = { ...newPost, id };
-            await createPostMutation.mutateAsync(newPostWithId);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     return (
         <Block>
@@ -42,22 +26,10 @@ export default function Posts() {
                             setPosts({ ...posts, body: e.target.value });
                         }}
                     />
-                    <button
-                        onClick={() => {
-                            handleCreatePost(posts);
-                        }}
-                    >
-                        포스트 추가
-                    </button>
+                    <button>포스트 추가</button>
                 </div>
             </InputBlock>
-            <LinkBlock>
-                {data?.map((post) => (
-                    <Link key={post!.id} href={`/posts/${post.id}`}>
-                        {post.id} - {post.title}
-                    </Link>
-                ))}
-            </LinkBlock>
+            <LinkBlock></LinkBlock>
         </Block>
     );
 }
