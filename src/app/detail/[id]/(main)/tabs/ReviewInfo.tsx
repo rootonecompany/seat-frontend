@@ -23,14 +23,15 @@ export default function ReviewInfo() {
 }
 
 const TitleWrapper = styled(Title)`
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 0.3rem;
-    padding-bottom: 0.9rem;
-    border-bottom: 1px solid ${Colors.line2};
-
-    span {
+    &&& {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 0.3rem;
+        padding-bottom: 0.9rem;
+        border-bottom: 1px solid ${Colors.line2};
+    }
+    &&& > span {
         font-size: 0.9rem;
         font-weight: 600;
         color: ${Colors.primary};
